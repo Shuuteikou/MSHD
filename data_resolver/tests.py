@@ -2,7 +2,7 @@ from .models import CommDisaster
 from django.http import JsonResponse
 from django.test import TestCase
 from django.shortcuts import render
-from data_resolver.views import read_json_data,import_json_data
+from data_resolver.views import read_json_data,import_json_data,id_mapping
 
 import json
 
@@ -64,4 +64,10 @@ class ModelTest(TestCase):
 	def test_read_json_data(self):
 		url = 'data_resolver/CommDisaster.json'
 		read_json_data(url)
+
+
+#测试灾情编码
+	def test_disaster_code(self):
+		id_mapping(get_value = '0101010020041111101')
+
 
