@@ -36,7 +36,7 @@ class ModelTest(TestCase):
 			"results": [
 				{
 					"id": "0001112223",
-					"date": "2020-05-05 12:12:12",
+					"date": "20200505121212",
 					"location": "000111000222223",
 					"type": "123",
 					"grade": "8",
@@ -46,7 +46,7 @@ class ModelTest(TestCase):
 				},
 				{
 					"id": "1001112223",
-					"date": "2020-05-04 22:12:12",
+					"date": "20200504221212",
 					"location": "111111000222223",
 					"type": "111",
 					"grade": "8",
