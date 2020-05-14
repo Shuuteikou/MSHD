@@ -2,6 +2,7 @@ from .models import CommDisaster
 from django.http import JsonResponse
 from django.test import TestCase
 from django.shortcuts import render
+from data_resolver.views import read_json_data,import_json_data
 
 import json
 
@@ -55,22 +56,12 @@ class ModelTest(TestCase):
 				}
 			]
 		}
-		#将字典格式转化为字符串
-		json_str = json.dumps(test_disaster)
-
-		#将数据写入json文件中
-		new_disaster = json.loads(json_str)
-		with open("data_resolver/CommDisaster.json", "w") as f:
-			json.dump(new_disaster, f)
+		url = "data_resolver/CommDisaster.json"
+		import_json_data(url,test_disaster)
 
 
 # 测试json输出
 	def test_read_json_data(self):
-		disaster = CommDisaster()
 		url = 'data_resolver/CommDisaster.json'
-		json_data = open(url)
-		json_load = json.load(json_data)
-
-		with open(url, 'r') as data:
-			parsed_json = json.load(data)
+		read_json_data(url)
 
