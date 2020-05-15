@@ -4,9 +4,14 @@ from django.shortcuts import render
 from data_resolver.models import DeathStatics
 from data_resolver.models import CivilStructure
 from data_resolver.models import CommDisaster
+<<<<<<< HEAD
 from data_resolver.models import CollapseRecord
 from data_resolver.models import DisatserPrediction
 from data_resolver.models import DisasterRequest
+=======
+from django.shortcuts import get_object_or_404, render
+# from .models import day,todo
+>>>>>>> bc0f60758a68c87161530e172ee736f989c7b83d
 
 
 import json
@@ -21,6 +26,14 @@ def read_json_data(url):
         parsed_json = json.load(data)
     return parsed_json
 
+def index_20200504(request):
+    return render(request,'index_20200504.html',)
+
+def index_20200514(request):
+    return render(request,'index_20200514.html',)
+
+def index(request):
+    return render(request,'index.html',)
 
 def import_json_data(url,test_disaster):
     # 用字典的格式存储测试的输入的json数据
