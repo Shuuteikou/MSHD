@@ -1,9 +1,16 @@
 #!/usr/bin/env python
 # -*- encoding:utf-8 -*-
 from django.shortcuts import render
+from data_resolver.models import DeathStatics
+from data_resolver.models import CivilStructure
 from data_resolver.models import CommDisaster
+from data_resolver.models import CollapseRecord
+from data_resolver.models import DisatserPrediction
+from data_resolver.models import DisasterRequest
+
 
 import json
+
 # Create your views here.
 def read_json_data(url):
     disaster = CommDisaster()
@@ -28,8 +35,6 @@ def import_json_data(url,test_disaster):
 
 #测试灾情编码的映射
 def id_mapping(get_value):
-    # get_value = '0101010020041111101'
-    print("id：%s" %get_value)
 
     #基础地理信息编码
     key_list01 = []

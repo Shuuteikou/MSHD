@@ -1,7 +1,5 @@
 from django.db import models
 
-# Create your models here.
-
 #####人员伤亡及失踪数据库设计表#####
 #人员伤亡失踪
 class DeathStatics(models.Model):
