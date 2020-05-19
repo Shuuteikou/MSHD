@@ -4,14 +4,11 @@ from django.shortcuts import render
 from data_resolver.models import DeathStatics
 from data_resolver.models import CivilStructure
 from data_resolver.models import CommDisaster
-<<<<<<< HEAD
 from data_resolver.models import CollapseRecord
 from data_resolver.models import DisatserPrediction
 from data_resolver.models import DisasterRequest
-=======
 from django.shortcuts import get_object_or_404, render
 # from .models import day,todo
->>>>>>> bc0f60758a68c87161530e172ee736f989c7b83d
 
 
 import json
