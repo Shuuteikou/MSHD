@@ -13,6 +13,9 @@ class DeathStatics(models.Model):
     number = models.IntegerField()
     #上报单位
     reporting_unit=models.CharField(max_length=50)
+    
+    def __str__(self):
+        return self.id
 
 #人员失踪
 class MissingStatics(models.Model):
@@ -26,6 +29,9 @@ class MissingStatics(models.Model):
     number = models.IntegerField()
     #上报单位
     reporting_unit=models.CharField(max_length=50)
+
+    def __str__(self):
+        return self.id
 
 #####房屋破坏数据库设计表#####
 #土木结构房屋破坏统计表
@@ -46,6 +52,9 @@ class CivilStructure(models.Model):
     note = models.CharField(max_length=200)
     #上报单位
     reporting_unit=models.CharField(max_length=50)
+
+    def __str__(self):
+        return self.id
 
 #砖混结构房屋破坏统计表
 class MasonryStructure(models.Model):
@@ -70,6 +79,9 @@ class MasonryStructure(models.Model):
     #上报单位
     reporting_unit=models.CharField(max_length=50)
 
+    def __str__(self):
+        return self.id
+
 #####生命线灾情数据库设计表#####
 #通信系统灾情统计表
 class CommDisaster(models.Model):
@@ -90,6 +102,9 @@ class CommDisaster(models.Model):
     #上报单位
     reporting_unit=models.CharField(max_length=50)
 
+    def __str__(self):
+        return self.id
+
 #交通系统灾情统计表
 class TrafficDisaster(models.Model):
     #编码
@@ -108,6 +123,9 @@ class TrafficDisaster(models.Model):
     note = models.CharField(max_length=200)
     #上报单位
     reporting_unit=models.CharField(max_length=50)
+
+    def __str__(self):
+        return self.id
 
 #####次生灾害数据库设计表#####
 #崩塌记录表
@@ -129,6 +147,9 @@ class CollapseRecord(models.Model):
     # 上报单位
     reporting_unit = models.CharField(max_length=50)
 
+    def __str__(self):
+        return self.id
+
 #滑坡记录表
 class LandslideRecord(models.Model):
     # 编码
@@ -147,6 +168,9 @@ class LandslideRecord(models.Model):
     picture = models.BinaryField(max_length=1024 * 1024 * 8)
     # 上报单位
     reporting_unit = models.CharField(max_length=50)
+
+    def __str__(self):
+        return self.id
 
 #####震情数据库设计表#####
 #基本震情
@@ -169,6 +193,9 @@ class DisasterInfo(models.Model):
     picture = models.BinaryField(max_length=1024 * 1024 * 8)
     #上报单位
     reporting_unit = models.CharField(max_length=50)
+
+    def __str__(self):
+        return self.id
 
 
 #灾情预测
@@ -197,6 +224,9 @@ class DisatserPrediction(models.Model):
     picture = models.BinaryField(max_length=1024 * 1024 * 8)
     # 上报单位
     reporting_unit = models.CharField(max_length=50)
+
+    def __str__(self):
+        return self.id
 
 
 #向请求方输出地灾情数据信息表
