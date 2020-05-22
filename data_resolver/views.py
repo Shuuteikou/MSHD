@@ -1,17 +1,21 @@
 #!/usr/bin/env python
 # -*- encoding:utf-8 -*-
+
 from django.shortcuts import render
-from data_resolver.models import DeathStatics
-from data_resolver.models import CivilStructure
-from data_resolver.models import CommDisaster
-<<<<<<< HEAD
-from data_resolver.models import CollapseRecord
-from data_resolver.models import DisatserPrediction
-from data_resolver.models import DisasterRequest
-=======
+
+# 人员
+from .models import DeathStatics,MissingStatics
+# 房屋
+from .models import CivilStructure,MasonryStructure
+# 生命线
+from .models import CommDisaster,TrafficDisaster
+# 次生灾害
+from .models import CollapseRecord,LandslideRecord
+# 震情
+from .models import DisasterInfo,DisatserPrediction
+
 from django.shortcuts import get_object_or_404, render
 # from .models import day,todo
->>>>>>> bc0f60758a68c87161530e172ee736f989c7b83d
 
 
 import json
@@ -31,6 +35,36 @@ def index_20200504(request):
 
 def index_20200514(request):
     return render(request,'index_20200514.html',)
+
+def index_20200519(request):
+    return render(request,'index_20200519.html',)
+
+def details_xmxx(request):
+    DeathStatics_records = DeathStatics.objects.all()
+    MissingStatics_records = MissingStatics.objects.all()
+    CivilStructure_records = CivilStructure.objects.all()
+    MasonryStructure_records = MasonryStructure.objects.all()
+    CommDisaster_records = CommDisaster.objects.all()
+    TrafficDisaster_records = TrafficDisaster.objects.all()
+    CollapseRecord_records = CollapseRecord.objects.all()
+    LandslideRecord_records = LandslideRecord.objects.all()
+    DisasterInfo_records = DisasterInfo.objects.all()
+    DisatserPrediction_records = DisatserPrediction.objects.all()
+
+    return render(request,'details_xmxx.html',
+    {
+        'DeathStatics_records': DeathStatics_records,
+        'MissingStatics_records': MissingStatics_records,
+        'CivilStructure_records': CivilStructure_records,
+        'MasonryStructure_records': MasonryStructure_records,
+        'CommDisaster_records': CommDisaster_records,
+        'TrafficDisaster_records': TrafficDisaster_records,
+        'CollapseRecord_records': CollapseRecord_records,
+        'LandslideRecord_records': LandslideRecord_records,
+        'DisasterInfo_records': DisasterInfo_records,
+        'DisatserPrediction_records': DisatserPrediction_records,
+    }
+    )
 
 def index(request):
     return render(request,'index.html',)
