@@ -397,6 +397,33 @@ def details_xmxx(request):
     }
     )
 
+def details_DeathStatics(request):
+    DeathStatics_records = DeathStatics.objects.all()
+    MissingStatics_records = MissingStatics.objects.all()
+    CivilStructure_records = CivilStructure.objects.all()
+    MasonryStructure_records = MasonryStructure.objects.all()
+    CommDisaster_records = CommDisaster.objects.all()
+    TrafficDisaster_records = TrafficDisaster.objects.all()
+    CollapseRecord_records = CollapseRecord.objects.all()
+    LandslideRecord_records = LandslideRecord.objects.all()
+    DisasterInfo_records = DisasterInfo.objects.all()
+    DisatserPrediction_records = DisatserPrediction.objects.all()
+
+    return render(request,'details_DeathStatics.html',
+    {
+        'DeathStatics_records': DeathStatics_records,
+        'MissingStatics_records': MissingStatics_records,
+        'CivilStructure_records': CivilStructure_records,
+        'MasonryStructure_records': MasonryStructure_records,
+        'CommDisaster_records': CommDisaster_records,
+        'TrafficDisaster_records': TrafficDisaster_records,
+        'CollapseRecord_records': CollapseRecord_records,
+        'LandslideRecord_records': LandslideRecord_records,
+        'DisasterInfo_records': DisasterInfo_records,
+        'DisatserPrediction_records': DisatserPrediction_records,
+    }
+    )
+
 def index(request):
     return render(request,'index.html',)
 
