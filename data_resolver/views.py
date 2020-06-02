@@ -78,7 +78,7 @@ def insert_CivilStructure(request):
     except:
         is_succeed = {"is_succeed": "false"}
         #没有save成功的时候返回false失败
-    return render(request,'index_20200504.html',is_succeed)
+    return render(request,'details_DeathStatics.html',is_succeed)
     #render返回deathstatics的页面（这个render的页面之后改成原来的页面）
 
 def insert_CoomDisaster(request):
