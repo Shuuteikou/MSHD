@@ -2,7 +2,7 @@
 # -*- encoding:utf-8 -*-
 
 from django.shortcuts import render
-
+from django.core import serializers
 #  人员
 from .models import DeathStatics, MissingStatics, InjuredStatics
 #  房屋
@@ -17,10 +17,61 @@ from .models import DisasterInfo, DisatserPrediction, DisasterRequest
 from django.shortcuts import get_object_or_404,  render
 #  from .models import day, todo
 
-
+from django.http import JsonResponse
 import json
 
 #  Create your views here.
+disaster_type_dictionary = {
+    '111': DeathStatics, '112':InjuredStatics, '113':MissingStatics,
+    '221':CivilStructure,'222':BrickwoodStructure,'223':MasonryStructure,'224':FrameworkStructure,
+    '225':OtherStructure,
+    '331':TrafficDisaster,'332':WaterDisaster,'333':OilDisaster,'334':GasDisaster,
+    '335':PowerDisaster,'336':CommDisaster,'337':IrrigationDisaster,
+    '441':CollapseRecord,'442':LandslideRecord,'443':DebrisRecord,
+    '444':KarstRecord,'445':CrackRecord,'446':SettlementRecord,'447':OtherStructure,
+    '551':DisasterInfo,'552':DisatserPrediction,
+}
+# 代号和代号类的对应表
+
+# 响应请求信息
+def response_disasterType(request):
+    #查找所有没有响应的请求
+    r = DisasterRequest.objects.filter(status='0')
+    data = {}
+    if r.exists():
+        result = r[0]
+        addr = request.o_URL
+        if r.DisasterType in disaster_type_dictionary.keys():
+            dataType = disaster_type_dictionary[r.DisasterType]
+            res = dataType.objects.all()
+            data['result'] = json.loads(serializers.serialize('json',res))
+            #序列化信息
+            url = addr + '/'+ r.DisasterType + '/' + dataType.__name__
+            data['final_url'] = url
+            data['is_succeed'] = 'true'
+        else:
+            data['is_succeed'] = 'false'
+            data['reason'] = 'DataType code not exists!'
+        #完成请求
+        result.status = '1'
+        result.save()
+    else:
+        data['is_succeed'] = 'false'
+        data['reason'] = 'Request not exists!'
+    return JsonResponse(data)
+
+
+def import_json_data(url, test_disaster):
+    #  用字典的格式存储测试的输入的json数据
+    #  将字典格式转化为字符串
+    json_str = json.dumps(test_disaster)
+
+    #  将数据写入json文件中
+    new_disaster = json.loads(json_str)
+    with open(url,  "w") as f:
+        json.dump(new_disaster,  f)
+    return
+
 def read_json_data(url):
     disaster = CommDisaster()
     json_data = open(url)
@@ -993,16 +1044,6 @@ def details_DeathStatics(request):
 def index(request):
     return render(request, 'index.html', )
 
-def import_json_data(url, test_disaster):
-    #  用字典的格式存储测试的输入的json数据
-    #  将字典格式转化为字符串
-    json_str = json.dumps(test_disaster)
-
-    #  将数据写入json文件中
-    new_disaster = json.loads(json_str)
-    with open(url,  "w") as f:
-        json.dump(new_disaster,  f)
-    return
 
 # 测试灾情编码的映射
 def id_mapping(get_value):
