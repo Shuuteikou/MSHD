@@ -4,11 +4,11 @@
 from django.shortcuts import render
 
 # 人员
-from .models import DeathStatics,MissingStatics
+from .models import DeathStatics,MissingStatics,InjuredStatics
 # 房屋
-from .models import CivilStructure,MasonryStructure
+from .models import CivilStructure,MasonryStructure,BrickwoodStructure,FrameworkStructure,OtherStructure
 # 生命线
-from .models import CommDisaster,TrafficDisaster
+from .models import CommDisaster,TrafficDisaster,WaterDisaster
 # 次生灾害
 from .models import CollapseRecord,LandslideRecord
 # 震情
@@ -55,6 +55,50 @@ def insert_DeathStatics(request):
     return render(request,'index_20200504.html',is_succeed)
     #render返回deathstatics的页面（这个render的页面之后改成原来的页面）
 
+def insert_InjuredStatics(request):
+    d_statics = DeathStatics()
+    #创建对象
+    i_statics = InjuredStatics()
+    i_statics.id = request.POST.get('id')
+    i_statics.location = request.POST.get('location')
+    i_statics.date = request.POST.get('date')
+    i_statics.number = request.POST.get('number')
+    i_statics.reporting_unit = request.POST.get('ms_code') + request.POST.get('reporting_unit')
+    #获取数据
+    is_succeed = None
+    #为前端返回是否成功的标识
+    try:
+        if i_statics.pk is not None:
+            i_statics.delete()
+        i_statics.save()
+        is_succeed = {"is_succeed": "true"}
+        #成功save的时候返回成功
+    except:
+        is_succeed = {"is_succeed": "false"}
+        #没有save成功的时候返回false失败
+    return render(request,'index_20200504.html',is_succeed)
+    #render返回deathstatics的页面（这个render的页面之后改成原来的页面）
+
+def insert_MissingStatics(request):
+    m_statics = MissingStatics()
+    m_statics.id = request.POST.get('id')
+    m_statics.location = request.POST.get('location')
+    m_statics.date = request.POST.get('date')
+    m_statics.number = request.POST.get('number')
+    m_statics.reporting_unit = request.POST.get('ms_code') + request.POST.get('reporting_unit')
+    try:
+        if m_statics.pk is not None:
+            m_statics.delete()
+        m_statics.save()
+        is_succeed = {"is_succeed": "true"}
+        #成功save的时候返回成功
+    except:
+        is_succeed = {"is_succeed": "false"}
+        #没有save成功的时候返回false失败
+    return render(request,'index_20200504.html',is_succeed)
+    #render返回deathstatics的页面（这个render的页面之后改成原来的页面）
+
+
 def insert_CivilStructure(request):
     c_structure = CivilStructure()
     #创建对象
@@ -73,6 +117,112 @@ def insert_CivilStructure(request):
         if c_structure.pk is not None:
             c_structure.delete()
         c_structure.save()
+        is_succeed = {"is_succeed": "true"}
+        #成功save的时候返回成功
+    except:
+        is_succeed = {"is_succeed": "false"}
+        #没有save成功的时候返回false失败
+    return render(request,'index_20200504.html',is_succeed)
+    #render返回deathstatics的页面（这个render的页面之后改成原来的页面）
+
+def insert_BrickwoodStructure(request):
+    b_structure = BrickwoodStructure()
+    b_structure.id = request.POST.get('id')
+    b_structure.date = request.POST.get('date')
+    b_structure.location = request.POST.get('location')
+    b_structure.basically_intact_square = request.POST.get('basically_intact_square')
+    b_structure.damaged_square = request.POST.get('damaged_square')
+    b_structure.destroyed_square = request.POST.get('destroyed_square')
+    b_structure.note = request.POST.get('note')
+    b_structure.reporting_unit = request.POST.get('ms_code') + request.POST.get('reporting_unit')
+    #获取数据
+    is_succeed = None
+    #为前端返回是否成功的标识
+    try:
+        if b_structure.pk is not None:
+            b_structure.delete()
+        b_structure.save()
+        is_succeed = {"is_succeed": "true"}
+        #成功save的时候返回成功
+    except:
+        is_succeed = {"is_succeed": "false"}
+        #没有save成功的时候返回false失败
+    return render(request,'index_20200504.html',is_succeed)
+    #render返回deathstatics的页面（这个render的页面之后改成原来的页面）
+
+def insert_MasonryStructure(request):
+    m_structure = MasonryStructure()
+    m_structure.id = request.POST.get('id')
+    m_structure.date = request.POST.get('date')
+    m_structure.location = request.POST.get('location')
+    m_structure.basically_intact_square = request.POST.get('basically_intact_square')
+    m_structure.slight_damaged_square = request.POST.get('slight_damaged_square')
+    m_structure.moderate_damaged_square = request.POST.get('moderate_damaged_square')
+    m_structure.serious_damaged_square = request.POST.get('serious_damaged_square')
+    m_structure.destroyed_square = request.POST.get('destroyed_square')
+    m_structure.note = request.POST.get('note')
+    m_structure.reporting_unit = request.POST.get('ms_code') + request.POST.get('reporting_unit')
+    #获取数据
+    is_succeed = None
+    #为前端返回是否成功的标识
+    try:
+        if m_structure.pk is not None:
+            m_structure.delete()
+        m_structure.save()
+        is_succeed = {"is_succeed": "true"}
+        #成功save的时候返回成功
+    except:
+        is_succeed = {"is_succeed": "false"}
+        #没有save成功的时候返回false失败
+    return render(request,'index_20200504.html',is_succeed)
+    #render返回deathstatics的页面（这个render的页面之后改成原来的页面）
+
+def insert_FrameworkStructure(request):
+    f_structure = FrameworkStructure()
+    f_structure.id = request.POST.get('id')
+    f_structure.date = request.POST.get('date')
+    f_structure.location = request.POST.get('location')
+    f_structure.basically_intact_square = request.POST.get('basically_intact_square')
+    f_structure.slight_damaged_square = request.POST.get('slight_damaged_square')
+    f_structure.moderate_damaged_square = request.POST.get('moderate_damaged_square')
+    f_structure.serious_damaged_square = request.POST.get('serious_damaged_square')
+    f_structure.destroyed_square = request.POST.get('destroyed_square')
+    f_structure.note = request.POST.get('note')
+    f_structure.reporting_unit = request.POST.get('ms_code') + request.POST.get('reporting_unit')
+    #获取数据
+    is_succeed = None
+    #为前端返回是否成功的标识
+    try:
+        if f_structure.pk is not None:
+            f_structure.delete()
+        f_structure.save()
+        is_succeed = {"is_succeed": "true"}
+        #成功save的时候返回成功
+    except:
+        is_succeed = {"is_succeed": "false"}
+        #没有save成功的时候返回false失败
+    return render(request,'index_20200504.html',is_succeed)
+    #render返回deathstatics的页面（这个render的页面之后改成原来的页面）
+
+def insert_OtherStructure(request):
+    o_structure = OtherStructure()
+    o_structure.id = request.POST.get('id')
+    o_structure.date = request.POST.get('date')
+    o_structure.location = request.POST.get('location')
+    o_structure.basically_intact_square = request.POST.get('basically_intact_square')
+    o_structure.slight_damaged_square = request.POST.get('slight_damaged_square')
+    o_structure.moderate_damaged_square = request.POST.get('moderate_damaged_square')
+    o_structure.serious_damaged_square = request.POST.get('serious_damaged_square')
+    o_structure.destroyed_square = request.POST.get('destroyed_square')
+    o_structure.note = request.POST.get('note')
+    o_structure.reporting_unit = request.POST.get('ms_code') + request.POST.get('reporting_unit')
+    #获取数据
+    is_succeed = None
+    #为前端返回是否成功的标识
+    try:
+        if o_structure.pk is not None:
+            o_structure.delete()
+        o_structure.save()
         is_succeed = {"is_succeed": "true"}
         #成功save的时候返回成功
     except:
@@ -108,6 +258,55 @@ def insert_CoomDisaster(request):
     return render(request,'index_20200504.html',is_succeed)
     #render返回deathstatics的页面（这个render的页面之后改成原来的页面）
 
+def insert_TrafficDisaster(request):
+    t_disaster = TrafficDisaster()
+    #创建对象
+    t_disaster.id = request.POST.get('id')
+    t_disaster.date = request.POST.get('date')
+    t_disaster.location = request.POST.get('location')
+    t_disaster.type = request.POST.get('type')
+    t_disaster.grade = request.POST.get('grade')
+    t_disaster.note = request.POST.get('note')
+    t_disaster.reporting_unit = request.POST.get('ms_code') + request.POST.get('reporting_unit')
+    #获取数据
+    is_succeed = None
+    #为前端返回是否成功的标识
+    try:
+        if t_disaster.pk is not None:
+            t_disaster.delete()
+        t_disaster.save()
+        is_succeed = {"is_succeed": "true"}
+        #成功save的时候返回成功
+    except:
+        is_succeed = {"is_succeed": "false"}
+        #没有save成功的时候返回false失败
+    return render(request,'index_20200504.html',is_succeed)
+    #render返回deathstatics的页面（这个render的页面之后改成原来的页面）
+
+def insert_WaterDisaster(request):
+    w_disaster = WaterDisaster()
+    #创建对象
+    w_disaster.id = request.POST.get('id')
+    w_disaster.date = request.POST.get('date')
+    w_disaster.location = request.POST.get('location')
+    w_disaster.type = request.POST.get('type')
+    w_disaster.grade = request.POST.get('grade')
+    w_disaster.note = request.POST.get('note')
+    w_disaster.reporting_unit = request.POST.get('ms_code') + request.POST.get('reporting_unit')
+    #获取数据
+    is_succeed = None
+    #为前端返回是否成功的标识
+    try:
+        if w_disaster.pk is not None:
+            w_disaster.delete()
+        w_disaster.save()
+        is_succeed = {"is_succeed": "true"}
+        #成功save的时候返回成功
+    except:
+        is_succeed = {"is_succeed": "false"}
+        #没有save成功的时候返回false失败
+    return render(request,'index_20200504.html',is_succeed)
+    #render返回deathstatics的页面（这个render的页面之后改成原来的页面）
 
 # CollapseRecord
 def insert_CollapseRecord(request):
@@ -136,7 +335,7 @@ def insert_CollapseRecord(request):
 
 
 # DisasterPrediction
-def test_can_insert_DisasterPrediction(request):
+def insert_DisasterPrediction(request):
     d_prediction = DisatserPrediction()
     d_prediction.id = request.POST.get('id')
     d_prediction.date = request.POST.get('date')

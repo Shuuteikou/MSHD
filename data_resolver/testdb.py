@@ -329,7 +329,7 @@ class ModelTest(TestCase):
 
 
 	#FrameworkStructure
-	def test_can_insert_in_FrameworkStructure():
+	def test_can_insert_in_FrameworkStructure(self):
 		f_structure = FrameworkStructure()
 		f_structure.id = '0101010020042241101'
 		f_structure.date = '2020-05-03 18:06:12'
@@ -351,7 +351,7 @@ class ModelTest(TestCase):
 		return 
 
 	#OtherStructure
-	def test_can_insert_in_OtherStructure():
+	def test_can_insert_in_OtherStructure(self):
 		o_structure = OtherStructure()
 		o_structure.id = '0101010020042251101'
 		o_structure.date = '2020-05-03 18:06:12'
