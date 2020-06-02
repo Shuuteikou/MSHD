@@ -122,15 +122,9 @@ def insert_CivilStructure(request):
         # 成功save的时候返回成功
     except:
         is_succeed = {"is_succeed": "false"}
-<<<<<<< HEAD
         # 没有save成功的时候返回false失败
     return render(request,'index_20200504.html',is_succeed)
     # render返回deathstatics的页面（这个render的页面之后改成原来的页面）
-=======
-        #没有save成功的时候返回false失败
-    return render(request,'details_DeathStatics.html',is_succeed)
-    #render返回deathstatics的页面（这个render的页面之后改成原来的页面）
->>>>>>> 85d8f6d4465133a3458ffe4abf9d5786d95497f0
 
 def insert_BrickwoodStructure(request):
     b_structure = BrickwoodStructure()
