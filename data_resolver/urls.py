@@ -9,4 +9,7 @@ urlpatterns = [
     path('insert',views.insert_DeathStatics,name="insert_DeathStatics"),
     path('details_xmxx',views.details_xmxx,name='details_xmxx'),
     path('index',views.index,name='index'),
+
+    # 人员伤亡
+    path('details_DeathStatics',views.details_DeathStatics,name='details_DeathStatics'),
 ]
