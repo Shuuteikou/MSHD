@@ -1,5 +1,5 @@
 from django.test import TestCase
-
+"""
 from data_resolver.models import DeathStatics, InjuredStatics, MissingStatics
 from data_resolver.models import CivilStructure, BrickwoodStructure, MasonryStructure, FrameworkStructure, OtherStructure
 from data_resolver.models import CommDisaster, TrafficDisaster, WaterDisaster, OilDisaster, GasDisaster, PowerDisaster, IrrigationDisaster
@@ -994,7 +994,4 @@ class ModelTest(TestCase):
 		if d_request.pk is not None:
 			d_request.delete()
 		return
-
-
-
-
+"""
