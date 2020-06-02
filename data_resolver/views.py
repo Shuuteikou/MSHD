@@ -4,18 +4,18 @@
 from django.shortcuts import render
 
 #  人员
-from .models import DeathStatics,MissingStatics,InjuredStatics
+from .models import DeathStatics, MissingStatics, InjuredStatics
 #  房屋
-from .models import CivilStructure, MasonryStructure, BrickwoodStructure, FrameworkStructure,OtherStructure
+from .models import CivilStructure,  MasonryStructure,  BrickwoodStructure,  FrameworkStructure, OtherStructure
 #  生命线
-from .models import CommDisaster, TrafficDisaster,WaterDisaster,OilDisaster,GasDisaster,IrrigationDisaster,PowerDisaster
+from .models import CommDisaster,  TrafficDisaster, WaterDisaster, OilDisaster, GasDisaster, IrrigationDisaster, PowerDisaster
 #  次生灾害
-from .models import CollapseRecord,LandslideRecord,DebrisRecord,KarstRecord,CrackRecord,SettlementRecord,OtherRecord
+from .models import CollapseRecord, LandslideRecord, DebrisRecord, KarstRecord, CrackRecord, SettlementRecord, OtherRecord
 #  震情
-from .models import DisasterInfo,DisatserPrediction,DisasterRequest
+from .models import DisasterInfo, DisatserPrediction, DisasterRequest
 
-from django.shortcuts import get_object_or_404, render
-#  from .models import day,todo
+from django.shortcuts import get_object_or_404,  render
+#  from .models import day, todo
 
 
 import json
@@ -26,7 +26,7 @@ def read_json_data(url):
     json_data = open(url)
     json_load = json.load(json_data)
 
-    with open(url, 'r') as data:
+    with open(url,  'r') as data:
         parsed_json = json.load(data)
     return parsed_json
 
@@ -44,16 +44,16 @@ def insert_DeathStatics(request):
     
     # 为前端返回是否成功的标识
     try:
-        data = DeathStatics.objects.get(id=d_statics.id)
-        if data is not None:
+        data = DeathStatics.objects.filter(id=d_statics.id)
+        if data.exists():
             data.delete()
         d_statics.save()
         is_succeed = {"is_succeed": "true"}
         # 成功save的时候返回成功
-    except:
+    except Exception:
         is_succeed = {"is_succeed": "false"}
         # 没有save成功的时候返回false失败
-    return render(request,'index_20200504.html',is_succeed)
+    return render(request, 'index_20200504.html', is_succeed)
     # render返回deathstatics的页面（这个render的页面之后改成原来的页面）
 
 def insert_InjuredStatics(request):
@@ -65,19 +65,19 @@ def insert_InjuredStatics(request):
     i_statics.number = request.POST.get('number')
     i_statics.reporting_unit = request.POST.get('ms_code') + request.POST.get('reporting_unit')
     # 获取数据
-    
+
     # 为前端返回是否成功的标识
     try:
-        data = InjuredStatics.objects.get(id=i_statics.id)
-        if data is not None:
+        data = InjuredStatics.objects.filter(id=i_statics.id)
+        if data.exists():
             data.delete()
         i_statics.save()
         is_succeed = {"is_succeed": "true"}
         # 成功save的时候返回成功
-    except:
+    except Exception:
         is_succeed = {"is_succeed": "false"}
         # 没有save成功的时候返回false失败
-    return render(request,'index_20200504.html',is_succeed)
+    return render(request, 'index_20200504.html', is_succeed)
     # render返回deathstatics的页面（这个render的页面之后改成原来的页面）
 
 def insert_MissingStatics(request):
@@ -88,16 +88,16 @@ def insert_MissingStatics(request):
     m_statics.number = request.POST.get('number')
     m_statics.reporting_unit = request.POST.get('ms_code') + request.POST.get('reporting_unit')
     try:
-        data = InjuredStatics.objects.get(id=m_statics.id)
-        if data is not None:
+        data = InjuredStatics.objects.filter(id=m_statics.id)
+        if data.exists():
             data.delete()
         m_statics.save()
         is_succeed = {"is_succeed": "true"}
         # 成功save的时候返回成功
-    except:
+    except Exception:
         is_succeed = {"is_succeed": "false"}
         # 没有save成功的时候返回false失败
-    return render(request,'index_20200504.html',is_succeed)
+    return render(request, 'index_20200504.html', is_succeed)
     # render返回deathstatics的页面（这个render的页面之后改成原来的页面）
 
 
@@ -113,19 +113,19 @@ def insert_CivilStructure(request):
     c_structure.note = request.POST.get('note')
     c_structure.reporting_unit = request.POST.get('ms_code') + request.POST.get('reporting_unit')
     # 获取数据
-    
+
     #  为前端返回是否成功的标识
     try:
-        data = InjuredStatics.objects.get(id=c_structure.id)
-        if data is not None:
+        data = InjuredStatics.objects.filter(id=c_structure.id)
+        if data.exists():
             data.delete()
         c_structure.save()
         is_succeed = {"is_succeed": "true"}
         # 成功save的时候返回成功
-    except:
+    except Exception:
         is_succeed = {"is_succeed": "false"}
         # 没有save成功的时候返回false失败
-    return render(request,'index_20200504.html',is_succeed)
+    return render(request, 'index_20200504.html', is_succeed)
     # render返回deathstatics的页面（这个render的页面之后改成原来的页面）
 
 def insert_BrickwoodStructure(request):
@@ -139,19 +139,19 @@ def insert_BrickwoodStructure(request):
     b_structure.note = request.POST.get('note')
     b_structure.reporting_unit = request.POST.get('ms_code') + request.POST.get('reporting_unit')
     # 获取数据
-    
+
     # 为前端返回是否成功的标识
     try:
-        data = BrickwoodStructure.objects.get(id=b_structure.id)
-        if data is not None:
+        data = BrickwoodStructure.objects.filter(id=b_structure.id)
+        if data.exists():
             data.delete()
         b_structure.save()
         is_succeed = {"is_succeed": "true"}
         # 成功save的时候返回成功
-    except:
+    except Exception:
         is_succeed = {"is_succeed": "false"}
         # 没有save成功的时候返回false失败
-    return render(request,'index_20200504.html',is_succeed)
+    return render(request, 'index_20200504.html', is_succeed)
     # render返回deathstatics的页面（这个render的页面之后改成原来的页面）
 
 def insert_MasonryStructure(request):
@@ -167,19 +167,19 @@ def insert_MasonryStructure(request):
     m_structure.note = request.POST.get('note')
     m_structure.reporting_unit = request.POST.get('ms_code') + request.POST.get('reporting_unit')
     # 获取数据
-    
+
     # 为前端返回是否成功的标识
     try:
-        data = MasonryStructure.objects.get(id=m_structure.id)
-        if data is not None:
+        data = MasonryStructure.objects.filter(id=m_structure.id)
+        if data.exists():
             data.delete()
         m_structure.save()
         is_succeed = {"is_succeed": "true"}
         # 成功save的时候返回成功
-    except:
+    except Exception:
         is_succeed = {"is_succeed": "false"}
         # 没有save成功的时候返回false失败
-    return render(request,'index_20200504.html',is_succeed)
+    return render(request, 'index_20200504.html', is_succeed)
     # render返回deathstatics的页面（这个render的页面之后改成原来的页面）
 
 def insert_FrameworkStructure(request):
@@ -195,19 +195,19 @@ def insert_FrameworkStructure(request):
     f_structure.note = request.POST.get('note')
     f_structure.reporting_unit = request.POST.get('ms_code') + request.POST.get('reporting_unit')
     # 获取数据
-    
+
     # 为前端返回是否成功的标识
     try:
-        data = FrameworkStructure.objects.get(id=f_structure.id)
-        if data is not None:
+        data = FrameworkStructure.objects.filter(id=f_structure.id)
+        if data.exists():
             data.delete()
         f_structure.save()
         is_succeed = {"is_succeed": "true"}
         # 成功save的时候返回成功
-    except:
+    except Exception:
         is_succeed = {"is_succeed": "false"}
         # 没有save成功的时候返回false失败
-    return render(request,'index_20200504.html',is_succeed)
+    return render(request, 'index_20200504.html', is_succeed)
     # render返回deathstatics的页面（这个render的页面之后改成原来的页面）
 
 def insert_OtherStructure(request):
@@ -223,19 +223,19 @@ def insert_OtherStructure(request):
     o_structure.note = request.POST.get('note')
     o_structure.reporting_unit = request.POST.get('ms_code') + request.POST.get('reporting_unit')
     # 获取数据
-    
+
     # 为前端返回是否成功的标识
     try:
-        data = OtherStructure.objects.get(id=o_structure.id)
-        if data is not None:
+        data = OtherStructure.objects.filter(id=o_structure.id)
+        if data.exists():
             data.delete()
         o_structure.save()
         is_succeed = {"is_succeed": "true"}
         # 成功save的时候返回成功
-    except:
+    except Exception:
         is_succeed = {"is_succeed": "false"}
         # 没有save成功的时候返回false失败
-    return render(request,'index_20200504.html',is_succeed)
+    return render(request, 'index_20200504.html', is_succeed)
     # render返回deathstatics的页面（这个render的页面之后改成原来的页面）
 
 def insert_CoomDisaster(request):
@@ -251,19 +251,19 @@ def insert_CoomDisaster(request):
     disaster.note = request.POST.get('note')
     disaster.reporting_unit = request.POST.get('ms_code') + request.POST.get('reporting_unit')
     # 获取数据
-    
+
     # 为前端返回是否成功的标识
     try:
-        data = CommDisaster.objects.get(id=disaster.id)
-        if data is not None:
+        data = CommDisaster.objects.filter(id=disaster.id)
+        if data.exists():
             data.delete()
         disaster.save()
         is_succeed = {"is_succeed": "true"}
         # 成功save的时候返回成功
-    except:
+    except Exception:
         is_succeed = {"is_succeed": "false"}
         #  没有save成功的时候返回false失败
-    return render(request,'index_20200504.html',is_succeed)
+    return render(request, 'index_20200504.html', is_succeed)
     # render返回deathstatics的页面（这个render的页面之后改成原来的页面）
 
 def insert_TrafficDisaster(request):
@@ -277,19 +277,19 @@ def insert_TrafficDisaster(request):
     t_disaster.note = request.POST.get('note')
     t_disaster.reporting_unit = request.POST.get('ms_code') + request.POST.get('reporting_unit')
     # 获取数据
-    
+
     # 为前端返回是否成功的标识
     try:
-        data = TrafficDisaster.objects.get(id=t_disaster.id)
-        if data is not None:
+        data = TrafficDisaster.objects.filter(id=t_disaster.id)
+        if data.exists():
             data.delete()
         t_disaster.save()
         is_succeed = {"is_succeed": "true"}
         # 成功save的时候返回成功
-    except:
+    except Exception:
         is_succeed = {"is_succeed": "false"}
         # 没有save成功的时候返回false失败
-    return render(request,'index_20200504.html',is_succeed)
+    return render(request, 'index_20200504.html', is_succeed)
     # render返回deathstatics的页面（这个render的页面之后改成原来的页面）
 
 def insert_WaterDisaster(request):
@@ -303,19 +303,19 @@ def insert_WaterDisaster(request):
     w_disaster.note = request.POST.get('note')
     w_disaster.reporting_unit = request.POST.get('ms_code') + request.POST.get('reporting_unit')
     # 获取数据
-    
+
     # 为前端返回是否成功的标识
     try:
-        data = WaterDisaster.objects.get(id=w_disaster.id)
-        if data is not None:
+        data = WaterDisaster.objects.filter(id=w_disaster.id)
+        if data.exists():
             data.delete()
         w_disaster.save()
         is_succeed = {"is_succeed": "true"}
         # 成功save的时候返回成功
-    except:
+    except Exception:
         is_succeed = {"is_succeed": "false"}
         # 没有save成功的时候返回false失败
-    return render(request,'index_20200504.html',is_succeed)
+    return render(request, 'index_20200504.html', is_succeed)
     # render返回deathstatics的页面（这个render的页面之后改成原来的页面）
 
 def insert_PowerDisaster(request):
@@ -329,20 +329,20 @@ def insert_PowerDisaster(request):
     p_disaster.note = request.POST.get('note')
     p_disaster.reporting_unit = request.POST.get('ms_code') + request.POST.get('reporting_unit')
     # 获取数据
-    
+
     # 为前端返回是否成功的标识
     try:
-        data = PowerDisaster.objects.get(id=p_disaster.id)
-        if data is not None:
+        data = PowerDisaster.objects.filter(id=p_disaster.id)
+        if data.exists():
             data.delete()
         # 成功save的时候返回成功
         p_disaster.save()
         is_succeed = {"is_succeed": "true"}
         # 成功save的时候返回成功
-    except:
+    except Exception:
         is_succeed = {"is_succeed": "false"}
         # 没有save成功的时候返回false失败
-    return render(request,'index_20200504.html',is_succeed)
+    return render(request, 'index_20200504.html', is_succeed)
     # render返回deathstatics的页面（这个render的页面之后改成原来的页面）
 
 def insert_OilDisaster(request):
@@ -356,19 +356,19 @@ def insert_OilDisaster(request):
     o_disaster.note = request.POST.get('note')
     o_disaster.reporting_unit = request.POST.get('ms_code') + request.POST.get('reporting_unit')
     # 获取数据
-    
+
     # 为前端返回是否成功的标识
     try:
-        data = PowerDisaster.objects.get(id=o_disaster.id)
-        if data is not None:
+        data = PowerDisaster.objects.filter(id=o_disaster.id)
+        if data.exists():
             data.delete()
         o_disaster.save()
         is_succeed = {"is_succeed": "true"}
         # 成功save的时候返回成功
-    except:
+    except Exception:
         is_succeed = {"is_succeed": "false"}
         # 没有save成功的时候返回false失败
-    return render(request,'index_20200504.html',is_succeed)
+    return render(request, 'index_20200504.html', is_succeed)
     # render返回deathstatics的页面（这个render的页面之后改成原来的页面）
 
 
@@ -383,19 +383,19 @@ def insert_IrrigationDisaster(request):
     i_disaster.note = request.POST.get('note')
     i_disaster.reporting_unit = request.POST.get('ms_code') + request.POST.get('reporting_unit')
     # 获取数据
-    
+
     # 为前端返回是否成功的标识
     try:
-        data = IrrigationDisaster.objects.get(id=i_disaster.id)
-        if data is not None:
+        data = IrrigationDisaster.objects.filter(id=i_disaster.id)
+        if data.exists():
             data.delete()
         i_disaster.save()
         is_succeed = {"is_succeed": "true"}
         # 成功save的时候返回成功
-    except:
+    except Exception:
         is_succeed = {"is_succeed": "false"}
         # 没有save成功的时候返回false失败
-    return render(request,'index_20200504.html',is_succeed)
+    return render(request, 'index_20200504.html', is_succeed)
     # render返回deathstatics的页面（这个render的页面之后改成原来的页面）
 
 def insert_GasDisaster(request):
@@ -409,19 +409,19 @@ def insert_GasDisaster(request):
     g_disaster.note = request.POST.get('note')
     g_disaster.reporting_unit = request.POST.get('ms_code') + request.POST.get('reporting_unit')
     # 获取数据
-    
+
     # 为前端返回是否成功的标识
     try:
-        data = GasDisaster.objects.get(id=g_disaster.id)
-        if data is not None:
+        data = GasDisaster.objects.filter(id=g_disaster.id)
+        if data.exists():
             data.delete()
         g_disaster.save()
         is_succeed = {"is_succeed": "true"}
         # 成功save的时候返回成功
-    except:
+    except Exception:
         is_succeed = {"is_succeed": "false"}
         # 没有save成功的时候返回false失败
-    return render(request,'index_20200504.html',is_succeed)
+    return render(request, 'index_20200504.html', is_succeed)
     # render返回deathstatics的页面（这个render的页面之后改成原来的页面）
 
 #  CollapseRecord
@@ -435,19 +435,19 @@ def insert_CollapseRecord(request):
     c_record.note = request.POST.get('note')
     #  c_record.picture = cv2.imread('earthquake.jpg')
     c_record.reporting_unit = request.POST.get('ms_code') + request.POST.get('reporting_unit')
-    
+
     # 为前端返回是否成功的标识
     try:
-        data = CollapseRecord.objects.get(id=c_record.id)
-        if data is not None:
+        data = CollapseRecord.objects.filter(id=c_record.id)
+        if data.exists():
             data.delete()
         c_record.save()
         is_succeed = {"is_succeed": "true"}
         # 成功save的时候返回成功
-    except:
+    except Exception:
         is_succeed = {"is_succeed": "false"}
         # 没有save成功的时候返回false失败
-    return render(request,'index_20200504.html',is_succeed)
+    return render(request, 'index_20200504.html', is_succeed)
     # render返回deathstatics的页面（这个render的页面之后改成原来的页面）
 
 #  CollapseRecord
@@ -461,19 +461,19 @@ def insert_LandslideRecord(request):
     l_record.note = request.POST.get('note')
     #  c_record.picture = cv2.imread('earthquake.jpg')
     l_record.reporting_unit = request.POST.get('ms_code') + request.POST.get('reporting_unit')
-    
+
     # 为前端返回是否成功的标识
     try:
-        data = LandslideRecord.objects.get(id=l_record.id)
-        if data is not None:
+        data = LandslideRecord.objects.filter(id=l_record.id)
+        if data.exists():
             data.delete()
         l_record.save()
         is_succeed = {"is_succeed": "true"}
         # 成功save的时候返回成功
-    except:
+    except Exception:
         is_succeed = {"is_succeed": "false"}
         # 没有save成功的时候返回false失败
-    return render(request,'index_20200504.html',is_succeed)
+    return render(request, 'index_20200504.html', is_succeed)
     # render返回deathstatics的页面（这个render的页面之后改成原来的页面）
 
 #  CollapseRecord
@@ -487,19 +487,19 @@ def insert_DebrisRecord(request):
     d_record.note = request.POST.get('note')
     #  c_record.picture = cv2.imread('earthquake.jpg')
     d_record.reporting_unit = request.POST.get('ms_code') + request.POST.get('reporting_unit')
-    
+
     # 为前端返回是否成功的标识
     try:
-        data = DebrisRecord.objects.get(id=d_record.id)
-        if data is not None:
+        data = DebrisRecord.objects.filter(id=d_record.id)
+        if data.exists():
             data.delete()
         d_record.save()
         is_succeed = {"is_succeed": "true"}
         # 成功save的时候返回成功
-    except:
+    except Exception:
         is_succeed = {"is_succeed": "false"}
         # 没有save成功的时候返回false失败
-    return render(request,'index_20200504.html',is_succeed)
+    return render(request, 'index_20200504.html', is_succeed)
     # render返回deathstatics的页面（这个render的页面之后改成原来的页面）
 
 # KarstRecord
@@ -513,19 +513,19 @@ def insert_KarstRecord(request):
     k_record.note = request.POST.get('note')
     #  c_record.picture = cv2.imread('earthquake.jpg')
     k_record.reporting_unit = request.POST.get('ms_code') + request.POST.get('reporting_unit')
-    
+
     # 为前端返回是否成功的标识
     try:
-        data = KarstRecord.objects.get(id=k_record.id)
-        if data is not None:
+        data = KarstRecord.objects.filter(id=k_record.id)
+        if data.exists():
             data.delete()
         k_record.save()
         is_succeed = {"is_succeed": "true"}
         # 成功save的时候返回成功
-    except:
+    except Exception:
         is_succeed = {"is_succeed": "false"}
         # 没有save成功的时候返回false失败
-    return render(request,'index_20200504.html',is_succeed)
+    return render(request, 'index_20200504.html', is_succeed)
     # render返回deathstatics的页面（这个render的页面之后改成原来的页面）
 
 # KarstRecord
@@ -539,19 +539,19 @@ def insert_CrackRecord(request):
     c_record.note = request.POST.get('note')
     #  c_record.picture = cv2.imread('earthquake.jpg')
     c_record.reporting_unit = request.POST.get('ms_code') + request.POST.get('reporting_unit')
-    
+
     # 为前端返回是否成功的标识
     try:
-        data = CrackRecord.objects.get(id=c_record.id)
-        if data is not None:
+        data = CrackRecord.objects.filter(id=c_record.id)
+        if data.exists():
             data.delete()
         c_record.save()
         is_succeed = {"is_succeed": "true"}
         # 成功save的时候返回成功
-    except:
+    except Exception:
         is_succeed = {"is_succeed": "false"}
         # 没有save成功的时候返回false失败
-    return render(request,'index_20200504.html',is_succeed)
+    return render(request, 'index_20200504.html', is_succeed)
     # render返回deathstatics的页面（这个render的页面之后改成原来的页面）
 
 # KarstRecord
@@ -565,19 +565,19 @@ def insert_SettlementRecord(request):
     s_record.note = request.POST.get('note')
     #  c_record.picture = cv2.imread('earthquake.jpg')
     s_record.reporting_unit = request.POST.get('ms_code') + request.POST.get('reporting_unit')
-    
+
     # 为前端返回是否成功的标识
     try:
-        data = SettlementRecord.objects.get(id=s_record.id)
-        if data is not None:
+        data = SettlementRecord.objects.filter(id=s_record.id)
+        if data.exists():
             data.delete()
         s_record.save()
         is_succeed = {"is_succeed": "true"}
         # 成功save的时候返回成功
-    except:
+    except Exception:
         is_succeed = {"is_succeed": "false"}
         # 没有save成功的时候返回false失败
-    return render(request,'index_20200504.html',is_succeed)
+    return render(request, 'index_20200504.html', is_succeed)
     # render返回deathstatics的页面（这个render的页面之后改成原来的页面）
 
 # KarstRecord
@@ -591,19 +591,19 @@ def insert_OtherRecord(request):
     o_record.note = request.POST.get('note')
     #  c_record.picture = cv2.imread('earthquake.jpg')
     o_record.reporting_unit = request.POST.get('ms_code') + request.POST.get('reporting_unit')
-    
+
     # 为前端返回是否成功的标识
     try:
-        data = OtherRecord.objects.get(id=o_record.id)
-        if data is not None:
+        data = OtherRecord.objects.filter(id=o_record.id)
+        if data.exists():
             data.delete()
         o_record.save()
         is_succeed = {"is_succeed": "true"}
         # 成功save的时候返回成功
-    except:
+    except Exception:
         is_succeed = {"is_succeed": "false"}
         # 没有save成功的时候返回false失败
-    return render(request,'index_20200504.html',is_succeed)
+    return render(request, 'index_20200504.html', is_succeed)
     # render返回deathstatics的页面（这个render的页面之后改成原来的页面）
 
 #  Disasterinfo
@@ -619,16 +619,16 @@ def insert_DisasterInfo(request):
     #  d_prediction.picture = '0000'
     d_info.reporting_unit = request.POST.get('ms_code') + request.POST.get('reporting_unit')
     try:
-        data = DisasterInfo.objects.get(id=d_info.id)
-        if data is not None:
+        data = DisasterInfo.objects.filter(id=d_info.id)
+        if data.exists():
             data.delete()
         d_info.save()
         is_succeed = {"is_succeed": "true"}
         # 成功save的时候返回成功
-    except:
+    except Exception:
         is_succeed = {"is_succeed": "false"}
         # 没有save成功的时候返回false失败
-    return render(request,'index_20200504.html',is_succeed)
+    return render(request, 'index_20200504.html', is_succeed)
     # render返回deathstatics的页面（这个render的页面之后改成原来的页面）
 
 
@@ -648,16 +648,16 @@ def insert_DisasterPrediction(request):
     #  d_prediction.picture = '0000'
     d_prediction.reporting_unit = request.POST.get('ms_code') + request.POST.get('reporting_unit')
     try:
-        data = DisatserPrediction.objects.get(id=d_prediction.id)
-        if data is not None:
+        data = DisatserPrediction.objects.filter(id=d_prediction.id)
+        if data.exists():
             data.delete()
         d_prediction.save()
         is_succeed = {"is_succeed": "true"}
         # 成功save的时候返回成功
-    except:
+    except Exception:
         is_succeed = {"is_succeed": "false"}
         # 没有save成功的时候返回false失败
-    return render(request,'index_20200504.html',is_succeed)
+    return render(request, 'index_20200504.html', is_succeed)
     # render返回deathstatics的页面（这个render的页面之后改成原来的页面）
 
 #  DisasterPrediction
@@ -673,21 +673,21 @@ def insert_DisasterRequest(request):
         d_request.save()
         is_succeed = {"is_succeed": "true"}
         # 成功save的时候返回成功
-    except:
+    except Exception:
         is_succeed = {"is_succeed": "false"}
         # 没有save成功的时候返回false失败
-    return render(request,'index_20200504.html',is_succeed)
+    return render(request, 'index_20200504.html', is_succeed)
     # render返回deathstatics的页面（这个render的页面之后改成原来的页面）
 
 
 def index_20200504(request):
-    return render(request,'index_20200504.html',)
+    return render(request, 'index_20200504.html', )
 
 def index_20200514(request):
-    return render(request,'index_20200514.html',)
+    return render(request, 'index_20200514.html', )
 
 def index_20200519(request):
-    return render(request,'index_20200519.html',)
+    return render(request, 'index_20200519.html', )
 
 def details_xmxx(request):
     DeathStatics_records = DeathStatics.objects.all()
@@ -701,18 +701,18 @@ def details_xmxx(request):
     DisasterInfo_records = DisasterInfo.objects.all()
     DisatserPrediction_records = DisatserPrediction.objects.all()
 
-    return render(request,'details_xmxx.html',
+    return render(request, 'details_xmxx.html', 
     {
-        'DeathStatics_records': DeathStatics_records,
-        'MissingStatics_records': MissingStatics_records,
-        'CivilStructure_records': CivilStructure_records,
-        'MasonryStructure_records': MasonryStructure_records,
-        'CommDisaster_records': CommDisaster_records,
-        'TrafficDisaster_records': TrafficDisaster_records,
-        'CollapseRecord_records': CollapseRecord_records,
-        'LandslideRecord_records': LandslideRecord_records,
-        'DisasterInfo_records': DisasterInfo_records,
-        'DisatserPrediction_records': DisatserPrediction_records,
+        'DeathStatics_records': DeathStatics_records, 
+        'MissingStatics_records': MissingStatics_records, 
+        'CivilStructure_records': CivilStructure_records, 
+        'MasonryStructure_records': MasonryStructure_records, 
+        'CommDisaster_records': CommDisaster_records, 
+        'TrafficDisaster_records': TrafficDisaster_records, 
+        'CollapseRecord_records': CollapseRecord_records, 
+        'LandslideRecord_records': LandslideRecord_records, 
+        'DisasterInfo_records': DisasterInfo_records, 
+        'DisatserPrediction_records': DisatserPrediction_records, 
     }
     )
 
@@ -728,33 +728,33 @@ def details_DeathStatics(request):
     DisasterInfo_records = DisasterInfo.objects.all()
     DisatserPrediction_records = DisatserPrediction.objects.all()
 
-    return render(request,'details_DeathStatics.html',
+    return render(request, 'details_DeathStatics.html', 
     {
-        'DeathStatics_records': DeathStatics_records,
-        'MissingStatics_records': MissingStatics_records,
-        'CivilStructure_records': CivilStructure_records,
-        'MasonryStructure_records': MasonryStructure_records,
-        'CommDisaster_records': CommDisaster_records,
-        'TrafficDisaster_records': TrafficDisaster_records,
-        'CollapseRecord_records': CollapseRecord_records,
-        'LandslideRecord_records': LandslideRecord_records,
-        'DisasterInfo_records': DisasterInfo_records,
-        'DisatserPrediction_records': DisatserPrediction_records,
+        'DeathStatics_records': DeathStatics_records, 
+        'MissingStatics_records': MissingStatics_records, 
+        'CivilStructure_records': CivilStructure_records, 
+        'MasonryStructure_records': MasonryStructure_records, 
+        'CommDisaster_records': CommDisaster_records, 
+        'TrafficDisaster_records': TrafficDisaster_records, 
+        'CollapseRecord_records': CollapseRecord_records, 
+        'LandslideRecord_records': LandslideRecord_records, 
+        'DisasterInfo_records': DisasterInfo_records, 
+        'DisatserPrediction_records': DisatserPrediction_records, 
     }
     )
 
 def index(request):
-    return render(request,'index.html',)
+    return render(request, 'index.html', )
 
-def import_json_data(url,test_disaster):
+def import_json_data(url, test_disaster):
     #  用字典的格式存储测试的输入的json数据
     #  将字典格式转化为字符串
     json_str = json.dumps(test_disaster)
 
     #  将数据写入json文件中
     new_disaster = json.loads(json_str)
-    with open(url, "w") as f:
-        json.dump(new_disaster, f)
+    with open(url,  "w") as f:
+        json.dump(new_disaster,  f)
     return
 
 # 测试灾情编码的映射
@@ -763,11 +763,11 @@ def id_mapping(get_value):
     # 基础地理信息编码
     key_list01 = []
     value_list01 = []
-    adminiDivisionsDict = { '江苏省南京市玄武区新街口街道大石桥社区':'010101002004', 
-                            '广东省广州市越秀区白云街道广九社区':'020101007005', 
+    adminiDivisionsDict = { '江苏省南京市玄武区新街口街道大石桥社区':'010101002004',  
+                            '广东省广州市越秀区白云街道广九社区':'020101007005',  
                             '江苏省苏州市吴中区长桥街道宝带桥社区':'010201001001'}
 
-    for key,value in adminiDivisionsDict.items():
+    for key, value in adminiDivisionsDict.items():
         key_list01.append(key)
         value_list01.append(value)
 
@@ -782,13 +782,13 @@ def id_mapping(get_value):
     # 灾情信息编码
     key_list02 = []
     value_list02 = []
-    disasterInfo = {'人员伤亡及失踪-死亡':'111',
-                    '房屋破坏-土木':'221',
-                    '生命线工程灾情-通信':'336',
-                    '次生灾害-崩塌':'441',
+    disasterInfo = {'人员伤亡及失踪-死亡':'111', 
+                    '房屋破坏-土木':'221', 
+                    '生命线工程灾情-通信':'336', 
+                    '次生灾害-崩塌':'441', 
                     '震情-灾情预测':'552'}
 
-    for key,value in disasterInfo.items():
+    for key, value in disasterInfo.items():
         key_list02.append(key)
         value_list02.append(value)
 
@@ -804,12 +804,12 @@ def id_mapping(get_value):
     # 多源异构数据编码
     key_list03 = []
     value_list03 = []
-    originInfo = {'业务报送数据-公网':'1101',
-                  '泛在感知数据-通信网':'2202',
-                  '舆情感知数据-微博':'3301',
+    originInfo = {'业务报送数据-公网':'1101', 
+                  '泛在感知数据-通信网':'2202', 
+                  '舆情感知数据-微博':'3301', 
                   '承载体基础数据-川滇':'4401'}
 
-    for key,value in originInfo.items():
+    for key, value in originInfo.items():
         key_list03.append(key)
         value_list03.append(value)
 
