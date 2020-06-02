@@ -30,6 +30,29 @@ def read_json_data(url):
         parsed_json = json.load(data)
     return parsed_json
 
+
+def insert_DeathStatics(request):
+    d_statics = DeathStatics()
+    #创建对象
+
+    d_statics.id = request.POST.get('id')
+    d_statics.location = request.POST.get('location')
+    d_statics.date = request.POST.get('date')
+    d_statics.number = request.POST.get('number')
+    d_statics.reporting_unit = request.POST.get('ms_code') + request.POST.get('reporting_unit')
+    #获取数据
+    is_succeed = None
+    #为前端返回是否成功的标识
+    try:
+        d_statics.save()
+        is_succeed = {"is_succeed": "true"}
+        #成功save的时候返回成功
+    except:
+        is_succeed = {"is_succeed": "false"}
+        #没有save成功的时候返回false失败
+    return render(request,'index_20200504.html',is_succeed)
+    #render返回deathstatics的页面（这个render的页面之后改成原来的页面）
+
 def index_20200504(request):
     return render(request,'index_20200504.html',)
 
