@@ -542,7 +542,7 @@ class DisatserPrediction(models.Model):
 #向请求方输出地灾情数据信息表
 class DisasterRequest(models.Model):
     #编码
-    id = models.CharField(max_length=19,primary_key=True)
+    id = models.AutoField(max_length=19,primary_key=True)
     #上报时间:日期(日-月-年) DD-MM-YY(HH-MISS) - 24小时制
     date = models.CharField(max_length=12)
     #请求灾情类型(详见表1 - 灾情信息分类表)

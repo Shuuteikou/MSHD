@@ -44,9 +44,9 @@ def insert_DeathStatics(request):
     
     # 为前端返回是否成功的标识
     try:
-        
-        if d_statics.pk is not None:
-            d_statics.delete()
+        data = DeathStatics.objects.get(id=d_statics.id)
+        if data is not None:
+            data.delete()
         d_statics.save()
         is_succeed = {"is_succeed": "true"}
         # 成功save的时候返回成功
@@ -57,7 +57,6 @@ def insert_DeathStatics(request):
     # render返回deathstatics的页面（这个render的页面之后改成原来的页面）
 
 def insert_InjuredStatics(request):
-    d_statics = DeathStatics()
     # 创建对象
     i_statics = InjuredStatics()
     i_statics.id = request.POST.get('id')
@@ -69,8 +68,9 @@ def insert_InjuredStatics(request):
     
     # 为前端返回是否成功的标识
     try:
-        if i_statics.pk is not None:
-            i_statics.delete()
+        data = InjuredStatics.objects.get(id=i_statics.id)
+        if data is not None:
+            data.delete()
         i_statics.save()
         is_succeed = {"is_succeed": "true"}
         # 成功save的时候返回成功
@@ -88,8 +88,9 @@ def insert_MissingStatics(request):
     m_statics.number = request.POST.get('number')
     m_statics.reporting_unit = request.POST.get('ms_code') + request.POST.get('reporting_unit')
     try:
-        if m_statics.pk is not None:
-            m_statics.delete()
+        data = InjuredStatics.objects.get(id=m_statics.id)
+        if data is not None:
+            data.delete()
         m_statics.save()
         is_succeed = {"is_succeed": "true"}
         # 成功save的时候返回成功
@@ -115,8 +116,9 @@ def insert_CivilStructure(request):
     
     #  为前端返回是否成功的标识
     try:
-        if c_structure.pk is not None:
-            c_structure.delete()
+        data = InjuredStatics.objects.get(id=c_structure.id)
+        if data is not None:
+            data.delete()
         c_structure.save()
         is_succeed = {"is_succeed": "true"}
         # 成功save的时候返回成功
@@ -140,8 +142,9 @@ def insert_BrickwoodStructure(request):
     
     # 为前端返回是否成功的标识
     try:
-        if b_structure.pk is not None:
-            b_structure.delete()
+        data = BrickwoodStructure.objects.get(id=b_structure.id)
+        if data is not None:
+            data.delete()
         b_structure.save()
         is_succeed = {"is_succeed": "true"}
         # 成功save的时候返回成功
@@ -167,8 +170,9 @@ def insert_MasonryStructure(request):
     
     # 为前端返回是否成功的标识
     try:
-        if m_structure.pk is not None:
-            m_structure.delete()
+        data = MasonryStructure.objects.get(id=m_structure.id)
+        if data is not None:
+            data.delete()
         m_structure.save()
         is_succeed = {"is_succeed": "true"}
         # 成功save的时候返回成功
@@ -194,8 +198,9 @@ def insert_FrameworkStructure(request):
     
     # 为前端返回是否成功的标识
     try:
-        if f_structure.pk is not None:
-            f_structure.delete()
+        data = FrameworkStructure.objects.get(id=f_structure.id)
+        if data is not None:
+            data.delete()
         f_structure.save()
         is_succeed = {"is_succeed": "true"}
         # 成功save的时候返回成功
@@ -221,8 +226,9 @@ def insert_OtherStructure(request):
     
     # 为前端返回是否成功的标识
     try:
-        if o_structure.pk is not None:
-            o_structure.delete()
+        data = OtherStructure.objects.get(id=o_structure.id)
+        if data is not None:
+            data.delete()
         o_structure.save()
         is_succeed = {"is_succeed": "true"}
         # 成功save的时候返回成功
@@ -248,8 +254,9 @@ def insert_CoomDisaster(request):
     
     # 为前端返回是否成功的标识
     try:
-        if disaster.pk is not None:
-            disaster.delete()
+        data = CommDisaster.objects.get(id=disaster.id)
+        if data is not None:
+            data.delete()
         disaster.save()
         is_succeed = {"is_succeed": "true"}
         # 成功save的时候返回成功
@@ -273,8 +280,9 @@ def insert_TrafficDisaster(request):
     
     # 为前端返回是否成功的标识
     try:
-        if t_disaster.pk is not None:
-            t_disaster.delete()
+        data = TrafficDisaster.objects.get(id=t_disaster.id)
+        if data is not None:
+            data.delete()
         t_disaster.save()
         is_succeed = {"is_succeed": "true"}
         # 成功save的时候返回成功
@@ -298,8 +306,9 @@ def insert_WaterDisaster(request):
     
     # 为前端返回是否成功的标识
     try:
-        if w_disaster.pk is not None:
-            w_disaster.delete()
+        data = WaterDisaster.objects.get(id=w_disaster.id)
+        if data is not None:
+            data.delete()
         w_disaster.save()
         is_succeed = {"is_succeed": "true"}
         # 成功save的时候返回成功
@@ -323,8 +332,10 @@ def insert_PowerDisaster(request):
     
     # 为前端返回是否成功的标识
     try:
-        if p_disaster.pk is not None:
-            p_disaster.delete()
+        data = PowerDisaster.objects.get(id=p_disaster.id)
+        if data is not None:
+            data.delete()
+        # 成功save的时候返回成功
         p_disaster.save()
         is_succeed = {"is_succeed": "true"}
         # 成功save的时候返回成功
@@ -348,8 +359,9 @@ def insert_OilDisaster(request):
     
     # 为前端返回是否成功的标识
     try:
-        if o_disaster.pk is not None:
-            o_disaster.delete()
+        data = PowerDisaster.objects.get(id=o_disaster.id)
+        if data is not None:
+            data.delete()
         o_disaster.save()
         is_succeed = {"is_succeed": "true"}
         # 成功save的时候返回成功
@@ -374,8 +386,9 @@ def insert_IrrigationDisaster(request):
     
     # 为前端返回是否成功的标识
     try:
-        if i_disaster.pk is not None:
-            i_disaster.delete()
+        data = IrrigationDisaster.objects.get(id=i_disaster.id)
+        if data is not None:
+            data.delete()
         i_disaster.save()
         is_succeed = {"is_succeed": "true"}
         # 成功save的时候返回成功
@@ -399,8 +412,9 @@ def insert_GasDisaster(request):
     
     # 为前端返回是否成功的标识
     try:
-        if g_disaster.pk is not None:
-            g_disaster.delete()
+        data = GasDisaster.objects.get(id=g_disaster.id)
+        if data is not None:
+            data.delete()
         g_disaster.save()
         is_succeed = {"is_succeed": "true"}
         # 成功save的时候返回成功
@@ -424,8 +438,9 @@ def insert_CollapseRecord(request):
     
     # 为前端返回是否成功的标识
     try:
-        if c_record.pk is not None:
-            c_record.delete()
+        data = CollapseRecord.objects.get(id=c_record.id)
+        if data is not None:
+            data.delete()
         c_record.save()
         is_succeed = {"is_succeed": "true"}
         # 成功save的时候返回成功
@@ -449,8 +464,9 @@ def insert_LandslideRecord(request):
     
     # 为前端返回是否成功的标识
     try:
-        if l_record.pk is not None:
-            l_record.delete()
+        data = LandslideRecord.objects.get(id=l_record.id)
+        if data is not None:
+            data.delete()
         l_record.save()
         is_succeed = {"is_succeed": "true"}
         # 成功save的时候返回成功
@@ -474,8 +490,9 @@ def insert_DebrisRecord(request):
     
     # 为前端返回是否成功的标识
     try:
-        if d_record.pk is not None:
-            d_record.delete()
+        data = DebrisRecord.objects.get(id=d_record.id)
+        if data is not None:
+            data.delete()
         d_record.save()
         is_succeed = {"is_succeed": "true"}
         # 成功save的时候返回成功
@@ -499,8 +516,9 @@ def insert_KarstRecord(request):
     
     # 为前端返回是否成功的标识
     try:
-        if k_record.pk is not None:
-            k_record.delete()
+        data = KarstRecord.objects.get(id=k_record.id)
+        if data is not None:
+            data.delete()
         k_record.save()
         is_succeed = {"is_succeed": "true"}
         # 成功save的时候返回成功
@@ -524,8 +542,9 @@ def insert_CrackRecord(request):
     
     # 为前端返回是否成功的标识
     try:
-        if c_record.pk is not None:
-            c_record.delete()
+        data = CrackRecord.objects.get(id=c_record.id)
+        if data is not None:
+            data.delete()
         c_record.save()
         is_succeed = {"is_succeed": "true"}
         # 成功save的时候返回成功
@@ -549,8 +568,9 @@ def insert_SettlementRecord(request):
     
     # 为前端返回是否成功的标识
     try:
-        if s_record.pk is not None:
-            s_record.delete()
+        data = SettlementRecord.objects.get(id=s_record.id)
+        if data is not None:
+            data.delete()
         s_record.save()
         is_succeed = {"is_succeed": "true"}
         # 成功save的时候返回成功
@@ -574,8 +594,9 @@ def insert_OtherRecord(request):
     
     # 为前端返回是否成功的标识
     try:
-        if o_record.pk is not None:
-            o_record.delete()
+        data = OtherRecord.objects.get(id=o_record.id)
+        if data is not None:
+            data.delete()
         o_record.save()
         is_succeed = {"is_succeed": "true"}
         # 成功save的时候返回成功
@@ -598,8 +619,9 @@ def insert_DisasterInfo(request):
     #  d_prediction.picture = '0000'
     d_info.reporting_unit = request.POST.get('ms_code') + request.POST.get('reporting_unit')
     try:
-        if d_info.pk is not None:
-            d_info.delete()
+        data = DisasterInfo.objects.get(id=d_info.id)
+        if data is not None:
+            data.delete()
         d_info.save()
         is_succeed = {"is_succeed": "true"}
         # 成功save的时候返回成功
@@ -626,8 +648,9 @@ def insert_DisasterPrediction(request):
     #  d_prediction.picture = '0000'
     d_prediction.reporting_unit = request.POST.get('ms_code') + request.POST.get('reporting_unit')
     try:
-        if d_prediction.pk is not None:
-            d_prediction.delete()
+        data = DisatserPrediction.objects.get(id=d_prediction.id)
+        if data is not None:
+            data.delete()
         d_prediction.save()
         is_succeed = {"is_succeed": "true"}
         # 成功save的时候返回成功
@@ -640,15 +663,13 @@ def insert_DisasterPrediction(request):
 #  DisasterPrediction
 def insert_DisasterRequest(request):
     d_request = DisasterRequest()
-    d_request.id = request.POST.get('id')
     d_request.date = request.POST.get('date')
     d_request.disasterType = request.POST.get('disasterType')
-    d_request.status = request.POST.get('status')
+    d_request.o_URL = request.POST.get('o_URL')
+    d_request.requestunit = request.POST.get('requestunit')
+    d_request.status = '0'
     #  d_prediction.picture = '0000'
-    d_request.reporting_unit = request.POST.get('ms_code') + request.POST.get('reporting_unit')
     try:
-        if d_request.pk is not None:
-            d_request.delete()
         d_request.save()
         is_succeed = {"is_succeed": "true"}
         # 成功save的时候返回成功
@@ -657,6 +678,7 @@ def insert_DisasterRequest(request):
         # 没有save成功的时候返回false失败
     return render(request,'index_20200504.html',is_succeed)
     # render返回deathstatics的页面（这个render的页面之后改成原来的页面）
+
 
 def index_20200504(request):
     return render(request,'index_20200504.html',)
