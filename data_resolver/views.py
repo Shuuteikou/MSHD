@@ -44,7 +44,116 @@ def insert_DeathStatics(request):
     is_succeed = None
     #为前端返回是否成功的标识
     try:
+        if d_statics.pk is not None:
+            d_statics.delete()
         d_statics.save()
+        is_succeed = {"is_succeed": "true"}
+        #成功save的时候返回成功
+    except:
+        is_succeed = {"is_succeed": "false"}
+        #没有save成功的时候返回false失败
+    return render(request,'index_20200504.html',is_succeed)
+    #render返回deathstatics的页面（这个render的页面之后改成原来的页面）
+
+def insert_CivilStructure(request):
+    c_structure = CivilStructure()
+    #创建对象
+    c_structure.id = request.POST.get('id')
+    c_structure.date = request.POST.get('date')
+    c_structure.location = request.POST.get('location')
+    c_structure.basically_intact_square = request.POST.get('basically_intact_square')
+    c_structure.damaged_square = request.POST.get('damaged_square')
+    c_structure.destroyed_square = request.POST.get('destroyed_square')
+    c_structure.note = request.POST.get('note')
+    c_structure.reporting_unit = request.POST.get('ms_code') + request.POST.get('reporting_unit')
+    #获取数据
+    is_succeed = None
+    #为前端返回是否成功的标识
+    try:
+        if c_structure.pk is not None:
+            c_structure.delete()
+        c_structure.save()
+        is_succeed = {"is_succeed": "true"}
+        #成功save的时候返回成功
+    except:
+        is_succeed = {"is_succeed": "false"}
+        #没有save成功的时候返回false失败
+    return render(request,'index_20200504.html',is_succeed)
+    #render返回deathstatics的页面（这个render的页面之后改成原来的页面）
+
+def insert_CoomDisaster(request):
+    disaster = CommDisaster()
+    #创建对象
+    disaster.id = request.POST.get('id')
+    disaster.date = request.POST.get('date')
+    disaster.location = request.POST.get('location')
+    disaster.type = request.POST.get('type')
+    disaster.data = request.POST.get('data')
+    disaster.structure = request.POST.get('structure')
+    disaster.square = request.POST.get('square')
+    disaster.note = request.POST.get('note')
+    disaster.reporting_unit = request.POST.get('ms_code') + request.POST.get('reporting_unit')
+    #获取数据
+    is_succeed = None
+    #为前端返回是否成功的标识
+    try:
+        if disaster.pk is not None:
+            disaster.delete()
+        disaster.save()
+        is_succeed = {"is_succeed": "true"}
+        #成功save的时候返回成功
+    except:
+        is_succeed = {"is_succeed": "false"}
+        #没有save成功的时候返回false失败
+    return render(request,'index_20200504.html',is_succeed)
+    #render返回deathstatics的页面（这个render的页面之后改成原来的页面）
+
+
+# CollapseRecord
+def insert_CollapseRecord(request):
+    c_record = CollapseRecord()
+    c_record.id = request.POST.get('id')
+    c_record.location = request.POST.get('location')
+    c_record.date = request.POST.get('date')
+    c_record.type = request.POST.get('type')
+    c_record.status = request.POST.get('status')
+    c_record.note = request.POST.get('note')
+    # c_record.picture = cv2.imread('earthquake.jpg')
+    c_record.reporting_unit = request.POST.get('ms_code') + request.POST.get('reporting_unit')
+    is_succeed = None
+    #为前端返回是否成功的标识
+    try:
+        if c_record.pk is not None:
+            c_record.delete()
+        c_record.save()
+        is_succeed = {"is_succeed": "true"}
+        #成功save的时候返回成功
+    except:
+        is_succeed = {"is_succeed": "false"}
+        #没有save成功的时候返回false失败
+    return render(request,'index_20200504.html',is_succeed)
+    #render返回deathstatics的页面（这个render的页面之后改成原来的页面）
+
+
+# DisasterPrediction
+def test_can_insert_DisasterPrediction(request):
+    d_prediction = DisatserPrediction()
+    d_prediction.id = request.POST.get('id')
+    d_prediction.date = request.POST.get('date')
+    d_prediction.location = request.POST.get('location')
+    d_prediction.longtitude = request.POST.get('longtitude')
+    d_prediction.latitude = request.POST.get('latitude')
+    d_prediction.depth = request.POST.get('depth')
+    d_prediction.magnitude = request.POST.get('magnitude')
+    d_prediction.intensity = request.POST.get('intensity')
+    d_prediction.type = request.POST.get('type')
+    d_prediction.note = request.POST.get('note')
+    # d_prediction.picture = '0000'
+    d_prediction.reporting_unit = request.POST.get('ms_code') + request.POST.get('reporting_unit')
+    try:
+        if d_prediction.pk is not None:
+            d_prediction.delete()
+        d_prediction.save()
         is_succeed = {"is_succeed": "true"}
         #成功save的时候返回成功
     except:
