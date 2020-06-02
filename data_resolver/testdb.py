@@ -1,10 +1,9 @@
 from django.test import TestCase
-from django.utils import unittest
 
 from data_resolver.models import DeathStatics, InjuredStatics, MissingStatics
 from data_resolver.models import CivilStructure, BrickwoodStructure, MasonryStructure, FrameworkStructure, OtherStructure
 from data_resolver.models import CommDisaster, TrafficDisaster, WaterDisaster, OilDisaster, GasDisaster, PowerDisaster, IrrigationDisaster
-from data_resolver.midels import CollapseRecord, LandslideRecord, DebrisRecord, KarstRecord, CrackRecord, SettlementRecord, OtherRecord
+from data_resolver.models import CollapseRecord, LandslideRecord, DebrisRecord, KarstRecord, CrackRecord, SettlementRecord, OtherRecord
 from data_resolver.models import DisasterInfo, DisatserPrediction,  DisasterRequest
 
 class ModelTest(TestCase):
