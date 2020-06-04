@@ -1295,6 +1295,24 @@ def details_DeathStatics(request):
     }
     )
 
+def details_InjuredStatics(request):
+    InjuredStatics_records = InjuredStatics.objects.all()
+
+    return render(request, 'details_InjuredStatics.html', 
+    {
+        'InjuredStatics_records': InjuredStatics_records, 
+    }
+    )
+
+def details_MissingStatics(request):
+    MissingStatics_records = MissingStatics.objects.all()
+
+    return render(request, 'details_MissingStatics.html', 
+    {
+        'MissingStatics_records': MissingStatics_records, 
+    }
+    )
+
 def index(request):
     return render(request, 'index.html', )
 

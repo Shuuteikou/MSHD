@@ -315,8 +315,8 @@
                       </tr>
                     </thead>
                     <tbody>
-                      {% for record in DeathStatics_records %}
-                      <form action="insert_DeathStatics" method="post">
+                      {% for record in MissingStatics_records %}
+                      <form action="insert_MissingStatics" method="post">
                         {% csrf_token %}
                           <tr>
                               <td><input type="radio" name="choice" id="choice" value=""/></td>                                                       
@@ -331,15 +331,15 @@
                         </form>
                       {% endfor %}
                       {% comment %} 根据后端url要求写action的url跳转？ {% endcomment %}
-                      <form action="insert_DeathStatics" method="post">
+                      <form action="insert_MissingStatics" method="post">
                           {% csrf_token %}
                           <td><input type="radio" name="choice" id="choice" value=""/></td>
                           <td><input type="text" name="id" id="id" value=""/></td>
                           <td><input type="text" name="location" id="location" value=""/></td>
                           <td><input type="text" name="date" id="date" value=""/></td>
                           <td><input type="text" name="number" id="number" value=""/></td>
-                          <td><input type="text" name="reporting_unit" id="reporting_unit" value=""/></td>
                           <td><input type="text" name="ms_code" id="ms_code" value=""/></td>
+                          <td><input type="text" name="reporting_unit" id="reporting_unit" value=""/></td>
                           <td><input type="submit" value="新增提交"></td>
                     </tbody>
                   </table>
@@ -347,6 +347,7 @@
               </div>
             </div>
           </div>
+
 
 
           

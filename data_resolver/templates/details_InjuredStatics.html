@@ -308,15 +308,15 @@
                         <th># 编号</th>
                         <th>地点</th>
                         <th>上报时间</th>
-                        <th>死亡人数</th>
+                        <th>受伤人数</th>
                         <th>MSCODE</th>
                         <th>上报单位</th>
                         <th></th>
                       </tr>
                     </thead>
                     <tbody>
-                      {% for record in DeathStatics_records %}
-                      <form action="insert_DeathStatics" method="post">
+                      {% for record in InjuredStatics_records %}
+                      <form action="insert_InjuredStatics" method="post">
                         {% csrf_token %}
                           <tr>
                               <td><input type="radio" name="choice" id="choice" value=""/></td>                                                       
@@ -338,8 +338,8 @@
                           <td><input type="text" name="location" id="location" value=""/></td>
                           <td><input type="text" name="date" id="date" value=""/></td>
                           <td><input type="text" name="number" id="number" value=""/></td>
-                          <td><input type="text" name="reporting_unit" id="reporting_unit" value=""/></td>
                           <td><input type="text" name="ms_code" id="ms_code" value=""/></td>
+                          <td><input type="text" name="reporting_unit" id="reporting_unit" value=""/></td>
                           <td><input type="submit" value="新增提交"></td>
                     </tbody>
                   </table>
@@ -347,6 +347,7 @@
               </div>
             </div>
           </div>
+
 
 
           
