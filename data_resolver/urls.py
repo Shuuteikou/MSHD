@@ -29,5 +29,5 @@ urlpatterns = [
     #其他结构房屋破坏统计表
     path('details_OtherStructure',views.details_OtherStructure,name="details_OtherStructure"),
 
-    
+
 ]

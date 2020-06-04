@@ -1313,6 +1313,51 @@ def details_MissingStatics(request):
     }
     )
 
+def details_CivilStructure(request):
+    CivilStructure_records = CivilStructure.objects.all()
+
+    return render(request, 'details_CivilStructure.html', 
+    {
+        'CivilStructure_records': CivilStructure_records, 
+    }
+    )
+
+def details_BrickwoodStructure(request):
+    BrickwoodStructure_records = BrickwoodStructure.objects.all()
+
+    return render(request, 'details_BrickwoodStructure.html', 
+    {
+        'BrickwoodStructure_records': BrickwoodStructure_records, 
+    }
+    )
+
+def details_MasonryStructure(request):
+    MasonryStructure_records = MasonryStructure.objects.all()
+
+    return render(request, 'details_MasonryStructure.html', 
+    {
+        'MasonryStructure_records': MasonryStructure_records, 
+    }
+    )
+
+def details_FrameworkStructure(request):
+    FrameworkStructure_records = FrameworkStructure.objects.all()
+
+    return render(request, 'details_FrameworkStructure.html', 
+    {
+        'FrameworkStructure_records': FrameworkStructure_records, 
+    }
+    )
+
+def details_OtherStructure(request):
+    OtherStructure_records = OtherStructure.objects.all()
+
+    return render(request, 'details_OtherStructure.html', 
+    {
+        'OtherStructure_records': OtherStructure_records, 
+    }
+    )
+
 def index(request):
     return render(request, 'index.html', )
 
