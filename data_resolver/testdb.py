@@ -1,10 +1,9 @@
 from django.test import TestCase
-from django.utils import unittest
-
+"""
 from data_resolver.models import DeathStatics, InjuredStatics, MissingStatics
 from data_resolver.models import CivilStructure, BrickwoodStructure, MasonryStructure, FrameworkStructure, OtherStructure
 from data_resolver.models import CommDisaster, TrafficDisaster, WaterDisaster, OilDisaster, GasDisaster, PowerDisaster, IrrigationDisaster
-from data_resolver.midels import CollapseRecord, LandslideRecord, DebrisRecord, KarstRecord, CrackRecord, SettlementRecord, OtherRecord
+from data_resolver.models import CollapseRecord, LandslideRecord, DebrisRecord, KarstRecord, CrackRecord, SettlementRecord, OtherRecord
 from data_resolver.models import DisasterInfo, DisatserPrediction,  DisasterRequest
 
 class ModelTest(TestCase):
@@ -330,7 +329,7 @@ class ModelTest(TestCase):
 
 
 	#FrameworkStructure
-	def test_can_insert_in_FrameworkStructure():
+	def test_can_insert_in_FrameworkStructure(self):
 		f_structure = FrameworkStructure()
 		f_structure.id = '0101010020042241101'
 		f_structure.date = '2020-05-03 18:06:12'
@@ -352,7 +351,7 @@ class ModelTest(TestCase):
 		return 
 
 	#OtherStructure
-	def test_can_insert_in_OtherStructure():
+	def test_can_insert_in_OtherStructure(self):
 		o_structure = OtherStructure()
 		o_structure.id = '0101010020042251101'
 		o_structure.date = '2020-05-03 18:06:12'
@@ -995,7 +994,4 @@ class ModelTest(TestCase):
 		if d_request.pk is not None:
 			d_request.delete()
 		return
-
-
-
-
+"""
