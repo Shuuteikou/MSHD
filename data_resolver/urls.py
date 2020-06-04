@@ -44,6 +44,19 @@ urlpatterns = [
     # 水利系统灾情统计表
     path('details_IrrigationDisaster',views.details_IrrigationDisaster,name="details_IrrigationDisaster"),
 
-
+    #崩塌记录表
+    path('details_CollapseRecord',views.details_CollapseRecord,name="details_CollapseRecord"),
+    #滑坡记录表
+    path('details_LandslideRecord',views.details_LandslideRecord,name="details_LandslideRecord"),
+    #泥石流记录表
+    path('details_DebrisRecord',views.details_DebrisRecord,name="details_DebrisRecord"),
+    #岩溶塌陷记录表
+    path('details_KarstRecord',views.details_KarstRecord,name="details_KarstRecord"),
+    #地裂缝记录表
+    path('details_CrackRecord',views.details_CrackRecord,name="details_CrackRecord"),
+    #地面沉降记录表
+    path('details_SettlementRecord',views.details_SettlementRecord,name="details_SettlementRecord"),
+    #其他次生灾害记录表
+    path('details_OtherRecord',views.details_OtherRecord,name="details_OtherRecord"),
 
 ]

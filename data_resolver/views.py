@@ -1421,6 +1421,70 @@ def details_IrrigationDisaster(request):
     }
     )
 
+def details_CollapseRecord(request):
+    CollapseRecord_records = CollapseRecord.objects.all()
+
+    return render(request, 'details_CollapseRecord.html', 
+    {
+        'CollapseRecord_records': CollapseRecord_records, 
+    }
+    )
+
+def details_LandslideRecord(request):
+    LandslideRecord_records = LandslideRecord.objects.all()
+
+    return render(request, 'details_LandslideRecord.html', 
+    {
+        'LandslideRecord_records': LandslideRecord_records, 
+    }
+    )
+
+def details_DebrisRecord(request):
+    DebrisRecord_records = DebrisRecord.objects.all()
+
+    return render(request, 'details_DebrisRecord.html', 
+    {
+        'DebrisRecord_records': DebrisRecord_records, 
+    }
+    )
+
+def details_KarstRecord(request):
+    KarstRecord_records = KarstRecord.objects.all()
+
+    return render(request, 'details_KarstRecord.html', 
+    {
+        'KarstRecord_records': KarstRecord_records, 
+    }
+    )
+
+def details_CrackRecord(request):
+    CrackRecord_records = CrackRecord.objects.all()
+
+    return render(request, 'details_CrackRecord.html', 
+    {
+        'CrackRecord_records': CrackRecord_records, 
+    }
+    )
+
+def details_SettlementRecord(request):
+    SettlementRecord_records = SettlementRecord.objects.all()
+
+    return render(request, 'details_SettlementRecord.html', 
+    {
+        'SettlementRecord_records': SettlementRecord_records, 
+    }
+    )
+
+def details_OtherRecord(request):
+    OtherRecord_records = OtherRecord.objects.all()
+
+    return render(request, 'details_OtherRecord.html', 
+    {
+        'OtherRecord_records': OtherRecord_records, 
+    }
+    )
+
+
 def index(request):
     return render(request, 'index.html', )
 
