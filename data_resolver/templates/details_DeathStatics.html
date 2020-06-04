@@ -309,34 +309,38 @@
                         <th>地点</th>
                         <th>上报时间</th>
                         <th>死亡人数</th>
+                        <th>MSCODE</th>
                         <th>上报单位</th>
                         <th></th>
                       </tr>
                     </thead>
                     <tbody>
                       {% for record in DeathStatics_records %}
+                      <form action="insert_DeathStatics" method="post">
+                        {% csrf_token %}
                           <tr>
                               <td><input type="radio" name="choice" id="choice" value=""/></td>                                                       
-                              <td><input type="text" name="choice" id="choice" value="{{ record.id }}"/></td>
-                              <td><input type="text" name="choice" id="choice" value="{{ record.location }}"/></td>
-                              <td><input type="text" name="choice" id="choice" value="{{ record.date }}"/></td>
-                              <td><input type="text" name="choice" id="choice" value="{{ record.number }}"/></td>
-                              <td><input type="text" name="choice" id="choice" value="{{ record.reporting_unit }}"/></td>
-                              <td><input type="submit" value="提交"></td>
+                              <td><input type="text" name="id" id="id" value="{{ record.id }}"/></td>
+                              <td><input type="text" name="location" id="location" value="{{ record.location }}"/></td>
+                              <td><input type="text" name="date" id="date" value="{{ record.date }}"/></td>
+                              <td><input type="text" name="number" id="number" value="{{ record.number }}"/></td>
+                              <td><input type="text" name="ms_code" id="ms_code" value="{{ record.reporting_unit|slice:"0:3" }}"/></td>
+                              <td><input type="text" name="reporting_unit" id="reporting_unit" value="{{ record.reporting_unit|slice:"3:-1" }}"/></td>
+                              <td><input type="submit" value="保存修改"></td>
                           </tr>
-                          
+                        </form>
                       {% endfor %}
                       {% comment %} 根据后端url要求写action的url跳转？ {% endcomment %}
-                      <form action="#" method="post">
+                      <form action="insert_DeathStatics" method="post">
                           {% csrf_token %}
                           <td><input type="radio" name="choice" id="choice" value=""/></td>
-                          <td><input type="text" name="choice" id="choice" value=""/></td>
-                          <td><input type="text" name="choice" id="choice" value=""/></td>
-                          <td><input type="text" name="choice" id="choice" value=""/></td>
-                          <td><input type="text" name="choice" id="choice" value=""/></td>
-                          <td><input type="text" name="choice" id="choice" value=""/></td>
-                          <td><input type="submit" value="提交"></td>
-                      </form>
+                          <td><input type="text" name="id" id="id" value=""/></td>
+                          <td><input type="text" name="location" id="location" value=""/></td>
+                          <td><input type="text" name="date" id="date" value=""/></td>
+                          <td><input type="text" name="number" id="number" value=""/></td>
+                          <td><input type="text" name="reporting_unit" id="reporting_unit" value=""/></td>
+                          <td><input type="text" name="ms_code" id="ms_code" value=""/></td>
+                          <td><input type="submit" value="新增提交"></td>
                     </tbody>
                   </table>
                 </div>
