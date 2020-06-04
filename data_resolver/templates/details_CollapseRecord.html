@@ -17,7 +17,6 @@
 <body>
 <div class="lyear-layout-web">
   <div class="lyear-layout-container">
-    <!--左侧导航-->
     <aside class="lyear-layout-sidebar">
       
       <!-- logo -->
@@ -29,92 +28,56 @@
         <nav class="sidebar-main">
           <ul class="nav nav-drawer">
             <li class="nav-item"> <a href="{% url "index_20200514" %}"><i class="mdi mdi-home"></i> 灾情管理首页</a> </li>
-            <li class="nav-item nav-item-has-subnav active open">
-              <a href="javascript:void(0)"><i class="mdi mdi-alert-octagon"></i> 人员伤亡及失踪</a>
+            <li class="nav-item nav-item-has-subnav">
+              <a href="javascript:void(0)"><i class="mdi mdi-ambulance"></i> 人员伤亡及失踪</a>
               <ul class="nav nav-subnav">
-                <li class="nav-item active"> <a href="{% url "details_DeathStatics" %}">人员死亡</a> </li>
-                <li> <a href="{% url "details_DeathStatics" %}">人员受伤</a> </li>
-                <li> <a href="#!">人员失踪</a> </li>
-                {% comment %} <li class="nav-item nav-item-has-subnav"> 
-                  <a href="#!">一级菜单</a>
-                  <ul class="nav nav-subnav">
-                    <li> <a href="#!">二级菜单</a> </li>
-                    <li class="nav-item nav-item-has-subnav"> 
-                      <a href="#!">二级菜单</a>
-                      <ul class="nav nav-subnav">
-                        <li class="nav-item active"> <a href="#!">三级菜单</a> </li>
-                        <li> <a href="#!">三级菜单</a> </li>
-                      </ul>
-                    </li>
-                  </ul>
-                </li>
-                <li> <a href="#!">一级菜单</a> </li> {% endcomment %}
+                <li> <a href="{% url "details_DeathStatics" %}">人员死亡</a> </li>
+                <li> <a href="{% url "details_InjuredStatics" %}">人员受伤</a> </li>
+                <li> <a href="{% url "details_MissingStatics" %}">人员失踪</a> </li>
               </ul>
             </li>
             <li class="nav-item nav-item-has-subnav">
               <a href="javascript:void(0)"><i class="mdi mdi-alert-octagon"></i> 房屋破坏数据</a>
               <ul class="nav nav-subnav">
-                <li class="nav-item"> <a href="{% url "details_DeathStatics" %}">土木结构房屋破坏</a> </li>
-                <li> <a href="{% url "details_DeathStatics" %}">砖木结构房屋破坏</a> </li>
-                <li> <a href="#!">砖混结构房屋破坏</a> </li>
-                <li> <a href="#!">框架结构房屋破坏</a> </li>
-                <li> <a href="#!">其他结构房屋破坏</a> </li>
+                <li > <a href="{% url "details_CivilStructure" %}">土木结构房屋破坏</a> </li>
+                <li class="nav-item"> <a href="{% url "details_BrickwoodStructure" %}">砖木结构房屋破坏</a> </li>
+                <li> <a href="{% url "details_MasonryStructure" %}">砖混结构房屋破坏</a> </li>
+                <li> <a href="{% url "details_FrameworkStructure" %}">框架结构房屋破坏</a> </li>
+                <li> <a href="{% url "details_OtherStructure" %}">其他结构房屋破坏</a> </li>
               </ul>
             </li>
             <li class="nav-item nav-item-has-subnav">
-              <a href="javascript:void(0)"><i class="mdi mdi-alert-octagon"></i> 生命线灾情数据</a>
+              <a href="javascript:void(0)"><i class="mdi mdi-rss-box"></i> 生命线灾情数据</a>
               <ul class="nav nav-subnav">
-                <li class="nav-item"> <a href="{% url "details_DeathStatics" %}">土木结构房屋破坏</a> </li>
-                <li> <a href="{% url "details_DeathStatics" %}">通信系统灾情</a> </li>
-                <li> <a href="#!">交通系统灾情</a> </li>
-                <li> <a href="#!">供水系统灾情</a> </li>
-                <li> <a href="#!">输油系统灾情</a> </li>
-                <li> <a href="#!">燃气系统灾情</a> </li>
-                <li> <a href="#!">电力系统灾情</a> </li>
-                <li> <a href="#!">水利系统灾情</a> </li>
+                <li> <a href="{% url "details_CommDisaster" %}">通信系统灾情</a> </li>
+                <li> <a href="{% url "details_TrafficDisaster" %}">交通系统灾情</a> </li>
+                <li> <a href="{% url "details_WaterDisaster" %}">供水系统灾情</a> </li>
+                <li> <a href="{% url "details_OilDisaster" %}">输油系统灾情</a> </li>
+                <li> <a href="{% url "details_GasDisaster" %}">燃气系统灾情</a> </li>
+                <li> <a href="{% url "details_PowerDisaster" %}">电力系统灾情</a> </li>
+                <li> <a href="{% url "details_IrrigationDisaster" %}">水利系统灾情</a> </li>
+              </ul>
+            </li>
+            <li class="nav-item nav-item-has-subnav active open">
+              <a href="javascript:void(0)"><i class="mdi mdi-alarm-light"></i> 次生灾害数据</a>
+              <ul class="nav nav-subnav">
+                <li class="nav-item active"> <a href="{% url "details_CollapseRecord" %}">崩塌记录</a> </li>
+                <li> <a href="{% url "details_LandslideRecord" %}">滑坡记录</a> </li>
+                <li> <a href="{% url "details_DebrisRecord" %}">泥石流记录</a> </li>
+                <li> <a href="{% url "details_KarstRecord" %}">岩溶塌陷记录</a> </li>
+                <li> <a href="{% url "details_CrackRecord" %}">地裂缝记录</a> </li>
+                <li> <a href="{% url "details_SettlementRecord" %}">地面沉降记录</a> </li>
+                <li> <a href="{% url "details_OtherRecord" %}">其他次生灾害记录</a> </li>
               </ul>
             </li>
             <li class="nav-item nav-item-has-subnav">
-              <a href="javascript:void(0)"><i class="mdi mdi-alert-octagon"></i> 次生灾害数据</a>
+              <a href="javascript:void(0)"><i class="mdi mdi-satellite-variant"></i> 震情数据</a>
               <ul class="nav nav-subnav">
-                <li class="nav-item"> <a href="{% url "details_DeathStatics" %}">崩塌记录</a> </li>
-                <li> <a href="{% url "details_DeathStatics" %}">滑坡记录</a> </li>
-                <li> <a href="#!">泥石流记录</a> </li>
-                <li> <a href="#!">岩溶塌陷记录</a> </li>
-                <li> <a href="#!">地裂缝记录</a> </li>
-                <li> <a href="#!">地面沉降记录</a> </li>
-                <li> <a href="#!">其他次生灾害记录</a> </li>
+                <li class="nav-item"> <a href="{% url "details_DisasterInfo" %}">基本震情</a> </li>
+                <li> <a href="{% url "details_DisatserPrediction" %}">灾情预测</a> </li>
               </ul>
             </li>
-            <li class="nav-item nav-item-has-subnav">
-              <a href="javascript:void(0)"><i class="mdi mdi-alert-octagon"></i> 震情数据</a>
-              <ul class="nav nav-subnav">
-                <li class="nav-item"> <a href="{% url "details_DeathStatics" %}">基本震情</a> </li>
-                <li> <a href="{% url "details_DeathStatics" %}">灾情预测</a> </li>
-              </ul>
-            </li>
-            <li class="nav-item"> <a href="{% url "index_20200514" %}"><i class="mdi mdi-home"></i> 向请求方输出信息表</a> </li>
-            {% comment %} <li class="nav-item nav-item-has-subnav">
-              <a href="javascript:void(0)"><i class="mdi mdi-menu"></i> 多级菜单</a>
-              <ul class="nav nav-subnav">
-                <li> <a href="#!">一级菜单</a> </li>
-                <li class="nav-item nav-item-has-subnav"> 
-                  <a href="#!">一级菜单</a>
-                  <ul class="nav nav-subnav">
-                    <li> <a href="#!">二级菜单</a> </li>
-                    <li class="nav-item nav-item-has-subnav"> 
-                      <a href="#!">二级菜单</a>
-                      <ul class="nav nav-subnav">
-                        <li> <a href="#!">三级菜单</a> </li>
-                        <li> <a href="#!">三级菜单</a> </li>
-                      </ul>
-                    </li>
-                  </ul>
-                </li>
-                <li> <a href="#!">一级菜单</a> </li>
-              </ul>
-            </li> {% endcomment %}
-
+            <li class="nav-item"> <a href="{% url "details_DisasterRequest" %}"><i class="mdi mdi-email-outline"></i> 向请求方输出信息表</a> </li>
           </ul>
         </nav>
       </div>

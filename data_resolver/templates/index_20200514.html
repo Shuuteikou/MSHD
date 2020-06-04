@@ -29,85 +29,58 @@
         <nav class="sidebar-main">
           <ul class="nav nav-drawer">
             <li class="nav-item active"> <a href="{% url "index_20200514" %}"><i class="mdi mdi-home"></i> 灾情管理首页</a> </li>
-            {% comment %} <li class="nav-item nav-item-has-subnav">
-              <a href="javascript:void(0)"><i class="mdi mdi-palette"></i> UI 元素</a>
+            <li class="nav-item nav-item-has-subnav">
+              <a href="javascript:void(0)"><i class="mdi mdi-ambulance"></i> 人员伤亡及失踪</a>
               <ul class="nav nav-subnav">
-                <li> <a href="{% static "lyear_ui_buttons.html" %}">按钮</a> </li>
-                <li> <a href="{% static "lyear_ui_cards.html" %}">卡片</a> </li>
-                <li> <a href="{% static "lyear_ui_grid.html" %}">格栅</a> </li>
-                <li> <a href="{% static "lyear_ui_icons.html" %}">图标</a> </li>
-                <li> <a href="{% static "lyear_ui_tables.html" %}">表格</a> </li>
-                <li> <a href="{% static "lyear_ui_modals.html" %}">模态框</a> </li>
-                <li> <a href="{% static "lyear_ui_tooltips_popover.html" %}">提示 / 弹出框</a> </li>
-                <li> <a href="{% static "lyear_ui_alerts.html" %}">警告框</a> </li>
-                <li> <a href="{% static "lyear_ui_pagination.html" %}">分页</a> </li>
-                <li> <a href="{% static "lyear_ui_progress.html" %}">进度条</a> </li>
-                <li> <a href="{% static "lyear_ui_tabs.html" %}">标签页</a> </li>
-                <li> <a href="{% static "lyear_ui_typography.html" %}">排版</a> </li>
-                <li> <a href="{% static "lyear_ui_step.html" %}">步骤</a> </li>
-                <li> <a href="{% static "lyear_ui_other.html" %}">其他</a> </li>
+                <li> <a href="{% url "details_DeathStatics" %}">人员死亡</a> </li>
+                <li> <a href="{% url "details_InjuredStatics" %}">人员受伤</a> </li>
+                <li> <a href="{% url "details_MissingStatics" %}">人员失踪</a> </li>
               </ul>
             </li>
             <li class="nav-item nav-item-has-subnav">
-              <a href="javascript:void(0)"><i class="mdi mdi-format-align-justify"></i> 表单</a>
+              <a href="javascript:void(0)"><i class="mdi mdi-alert-octagon"></i> 房屋破坏数据</a>
               <ul class="nav nav-subnav">
-                <li> <a href="{% static "lyear_forms_elements.html" %}">基本元素</a> </li>
-                <li> <a href="{% static "lyear_forms_radio.html" %}">单选框</a> </li>
-                <li> <a href="{% static "lyear_forms_checkbox.html" %}">复选框</a> </li>
-                <li> <a href="{% static "lyear_forms_switch.html" %}">开关</a> </li>
+                <li class="nav-item"> <a href="{% url "details_CivilStructure" %}">土木结构房屋破坏</a> </li>
+                <li> <a href="{% url "details_BrickwoodStructure" %}">砖木结构房屋破坏</a> </li>
+                <li> <a href="{% url "details_MasonryStructure" %}">砖混结构房屋破坏</a> </li>
+                <li> <a href="{% url "details_FrameworkStructure" %}">框架结构房屋破坏</a> </li>
+                <li> <a href="{% url "details_OtherStructure" %}">其他结构房屋破坏</a> </li>
               </ul>
             </li>
             <li class="nav-item nav-item-has-subnav">
-              <a href="javascript:void(0)"><i class="mdi mdi-file-outline"></i> 示例页面</a>
+              <a href="javascript:void(0)"><i class="mdi mdi-rss-box"></i> 生命线灾情数据</a>
               <ul class="nav nav-subnav">
-                <li> <a href="{% static "lyear_pages_doc.html" %}">文档列表</a> </li>
-                <li> <a href="{% static "lyear_pages_gallery.html" %}">图库列表</a> </li>
-                <li> <a href="{% static "lyear_pages_config.html" %}">网站配置</a> </li>
-                <li> <a href="{% static "lyear_pages_rabc.html" %}">设置权限</a> </li>
-                <li> <a href="{% static "lyear_pages_add_doc.html" %}">新增文档</a> </li>
-                <li> <a href="{% static "lyear_pages_guide.html" %}">表单向导</a> </li>
-                <li> <a href="{% static "lyear_pages_login.html" %}">登录页面</a> </li>
-                <li> <a href="{% static "lyear_pages_error.html" %}">错误页面</a> </li>
+                <li> <a href="{% url "details_CommDisaster" %}">通信系统灾情</a> </li>
+                <li> <a href="{% url "details_TrafficDisaster" %}">交通系统灾情</a> </li>
+                <li> <a href="{% url "details_WaterDisaster" %}">供水系统灾情</a> </li>
+                <li> <a href="{% url "details_OilDisaster" %}">输油系统灾情</a> </li>
+                <li> <a href="{% url "details_GasDisaster" %}">燃气系统灾情</a> </li>
+                <li> <a href="{% url "details_PowerDisaster" %}">电力系统灾情</a> </li>
+                <li> <a href="{% url "details_IrrigationDisaster" %}">水利系统灾情</a> </li>
               </ul>
             </li>
             <li class="nav-item nav-item-has-subnav">
-              <a href="javascript:void(0)"><i class="mdi mdi-language-javascript"></i> JS 插件</a>
+              <a href="javascript:void(0)"><i class="mdi mdi-alarm-light"></i> 次生灾害数据</a>
               <ul class="nav nav-subnav">
-                <li> <a href="{% static "lyear_js_datepicker.html" %}">日期选取器</a> </li>
-                <li> <a href="{% static "lyear_js_sliders.html" %}">滑块</a> </li>
-                <li> <a href="{% static "lyear_js_colorpicker.html" %}">选色器</a> </li>
-                <li> <a href="{% static "lyear_js_chartjs.html" %}">Chart.js</a> </li>
-                <li> <a href="{% static "lyear_js_jconfirm.html" %}">对话框</a> </li>
-                <li> <a href="{% static "lyear_js_tags_input.html" %}">标签插件</a> </li>
-                <li> <a href="{% static "lyear_js_notify.html" %}">通知消息</a> </li>
+                <li class="nav-item"> <a href="{% url "details_CollapseRecord" %}">崩塌记录</a> </li>
+                <li> <a href="{% url "details_LandslideRecord" %}">滑坡记录</a> </li>
+                <li> <a href="{% url "details_DebrisRecord" %}">泥石流记录</a> </li>
+                <li> <a href="{% url "details_KarstRecord" %}">岩溶塌陷记录</a> </li>
+                <li> <a href="{% url "details_CrackRecord" %}">地裂缝记录</a> </li>
+                <li> <a href="{% url "details_SettlementRecord" %}">地面沉降记录</a> </li>
+                <li> <a href="{% url "details_OtherRecord" %}">其他次生灾害记录</a> </li>
               </ul>
             </li>
             <li class="nav-item nav-item-has-subnav">
-              <a href="javascript:void(0)"><i class="mdi mdi-menu"></i> 多级菜单</a>
+              <a href="javascript:void(0)"><i class="mdi mdi-satellite-variant"></i> 震情数据</a>
               <ul class="nav nav-subnav">
-                <li> <a href="#!">一级菜单</a> </li>
-                <li class="nav-item nav-item-has-subnav"> 
-                  <a href="#!">一级菜单</a>
-                  <ul class="nav nav-subnav">
-                    <li> <a href="#!">二级菜单</a> </li>
-                    <li class="nav-item nav-item-has-subnav"> 
-                      <a href="#!">二级菜单</a>
-                      <ul class="nav nav-subnav">
-                        <li> <a href="#!">三级菜单</a> </li>
-                        <li> <a href="#!">三级菜单</a> </li>
-                      </ul>
-                    </li>
-                  </ul>
-                </li>
-                <li> <a href="#!">一级菜单</a> </li>
+                <li class="nav-item"> <a href="{% url "details_DisasterInfo" %}">基本震情</a> </li>
+                <li> <a href="{% url "details_DisatserPrediction" %}">灾情预测</a> </li>
               </ul>
-            </li> {% endcomment %}
+            </li>
+            <li class="nav-item"> <a href="{% url "details_DisasterRequest" %}"><i class="mdi mdi-email-outline"></i> 向请求方输出信息表</a> </li>
           </ul>
         </nav>
-        
-        {% comment %} <div class="sidebar-footer">
-          <p class="copyright">Copyright &copy; 2019. <a target="_blank" href="http://lyear.itshubao.com">IT书包</a> All rights reserved. More Templates <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a></p>
-        </div> {% endcomment %}
       </div>
       
     </aside>
