@@ -1484,6 +1484,33 @@ def details_OtherRecord(request):
     }
     )
 
+def details_DisasterInfo(request):
+    DisasterInfo_records = DisasterInfo.objects.all()
+
+    return render(request, 'details_DisasterInfo.html', 
+    {
+        'DisasterInfo_records': DisasterInfo_records, 
+    }
+    )
+
+def details_DisatserPrediction(request):
+    DisatserPrediction_records = DisatserPrediction.objects.all()
+
+    return render(request, 'details_DisatserPrediction.html', 
+    {
+        'DisatserPrediction_records': DisatserPrediction_records, 
+    }
+    )
+
+def details_DisasterRequest(request):
+    DisasterRequest_records = DisasterRequest.objects.all()
+
+    return render(request, 'details_DisasterRequest.html', 
+    {
+        'DisasterRequest_records': DisasterRequest_records, 
+    }
+    )
+
 
 def index(request):
     return render(request, 'index.html', )

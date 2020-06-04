@@ -59,4 +59,11 @@ urlpatterns = [
     #其他次生灾害记录表
     path('details_OtherRecord',views.details_OtherRecord,name="details_OtherRecord"),
 
+    #基本震情
+    path('details_DisasterInfo',views.details_DisasterInfo,name="details_DisasterInfo"),
+    #灾情预测
+    path('details_DisatserPrediction',views.details_DisatserPrediction,name="details_DisatserPrediction"),
+
+    #向请求方输出地灾情数据信息表
+    path('details_DisasterRequest',views.details_DisasterRequest,name="details_DisasterRequest"),
 ]
