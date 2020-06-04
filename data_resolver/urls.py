@@ -29,5 +29,21 @@ urlpatterns = [
     #其他结构房屋破坏统计表
     path('details_OtherStructure',views.details_OtherStructure,name="details_OtherStructure"),
 
+    # 通信系统灾情统计表
+    path('details_CommDisaster',views.details_CommDisaster,name="details_CommDisaster"),
+    # 交通系统灾情统计表
+    path('details_TrafficDisaster',views.details_TrafficDisaster,name="details_TrafficDisaster"),
+    # 供水系统灾情统计表
+    path('details_WaterDisaster',views.details_WaterDisaster,name="details_WaterDisaster"),
+    # 输油系统灾情统计表
+    path('details_OilDisaster',views.details_OilDisaster,name="details_OilDisaster"),
+    # 燃气系统灾情统计表
+    path('details_GasDisaster',views.details_GasDisaster,name="details_GasDisaster"),
+    # 电力系统灾情统计表    
+    path('details_PowerDisaster',views.details_PowerDisaster,name="details_PowerDisaster"),
+    # 水利系统灾情统计表
+    path('details_IrrigationDisaster',views.details_IrrigationDisaster,name="details_IrrigationDisaster"),
+
+
 
 ]

@@ -1358,6 +1358,69 @@ def details_OtherStructure(request):
     }
     )
 
+def details_CommDisaster(request):
+    CommDisaster_records = CommDisaster.objects.all()
+
+    return render(request, 'details_CommDisaster.html', 
+    {
+        'CommDisaster_records': CommDisaster_records, 
+    }
+    )
+
+def details_TrafficDisaster(request):
+    TrafficDisaster_records = TrafficDisaster.objects.all()
+
+    return render(request, 'details_TrafficDisaster.html', 
+    {
+        'TrafficDisaster_records': TrafficDisaster_records, 
+    }
+    )
+
+def details_WaterDisaster(request):
+    WaterDisaster_records = WaterDisaster.objects.all()
+
+    return render(request, 'details_WaterDisaster.html', 
+    {
+        'WaterDisaster_records': WaterDisaster_records, 
+    }
+    )
+
+def details_OilDisaster(request):
+    OilDisaster_records = OilDisaster.objects.all()
+
+    return render(request, 'details_OilDisaster.html', 
+    {
+        'OilDisaster_records': OilDisaster_records, 
+    }
+    )
+
+def details_GasDisaster(request):
+    GasDisaster_records = GasDisaster.objects.all()
+
+    return render(request, 'details_GasDisaster.html', 
+    {
+        'GasDisaster_records': GasDisaster_records, 
+    }
+    )
+
+def details_PowerDisaster(request):
+    PowerDisaster_records = PowerDisaster.objects.all()
+
+    return render(request, 'details_PowerDisaster.html', 
+    {
+        'PowerDisaster_records': PowerDisaster_records, 
+    }
+    )
+
+def details_IrrigationDisaster(request):
+    IrrigationDisaster_records = IrrigationDisaster.objects.all()
+
+    return render(request, 'details_IrrigationDisaster.html', 
+    {
+        'IrrigationDisaster_records': IrrigationDisaster_records, 
+    }
+    )
+
 def index(request):
     return render(request, 'index.html', )
 
