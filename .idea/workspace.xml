@@ -356,6 +356,16 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
+=======
+    <entry file="file://$PROJECT_DIR$/data_resolver/testdb.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-503">
+          <caret line="103" column="35" lean-forward="true" selection-start-line="103" selection-start-column="35" selection-end-line="103" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+>>>>>>> 03bd2ac685a0d2aeb577547da895a30bffc4031c
     <entry file="file://$PROJECT_DIR$/data_resolver/models.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="213">

@@ -60,7 +60,6 @@ def response_disasterType(request):
         data['reason'] = 'Request not exists!'
     return JsonResponse(data)
 
-
 def import_json_data(url, test_disaster):
     #  用字典的格式存储测试的输入的json数据
     #  将字典格式转化为字符串
@@ -72,14 +71,271 @@ def import_json_data(url, test_disaster):
         json.dump(new_disaster,  f)
     return
 
+# json文件写入数据库表
 def read_json_data(url):
-    disaster = CommDisaster()
-    json_data = open(url)
-    json_load = json.load(json_data)
-
     with open(url,  'r') as data:
         parsed_json = json.load(data)
-    return parsed_json
+    for item in parsed_json:
+        if '111' == item['id'][12:15]:
+            disaster = models.DeathStatics.objects.create(
+                id = item['id'], 
+                location = item['location'],
+                date = item['date'],
+                number = item['number'],
+                reporting_unit = item['reporting_unit']
+            )
+            disaster.save()
+        elif '112' == item['id'][12:15]:
+            disaster = models.InjuredStatics.objects.create(
+                id = item['id'], 
+                location = item['location'],
+                date = item['date'],
+                number = item['number'],
+                reporting_unit = item['reporting_unit']
+            )
+        elif '113' == item['id'][12:15]:
+            disaster = models.MissingStatics.objects.create(
+                id = item['id'], 
+                location = item['location'],
+                date = item['date'],
+                number = item['number'],
+                reporting_unit = item['reporting_unit']
+            )
+
+
+        elif '221' == item['id'][12:15]:
+            disaster = models.CivilStructure.objects.create(
+                id = item['id'], 
+                date = item['date'],
+                location = item['location'],
+                basically_intact_square = item['basically_intact_square'],
+                damaged_square = item['damaged_square'],
+                destroyed_square = item['destroyed_square'],
+                note = item['note'],
+                reporting_unit = item['reporting_unit']
+            )
+        elif '222' == item['id'][12:15]:
+            disaster = models.BrickwoodStructure.objects.create(
+                id = item['id'], 
+                date = item['date'],
+                location = item['location'],
+                basically_intact_square = item['basically_intact_square'],
+                damaged_square = item['damaged_square'],
+                destroyed_square = item['destroyed_square'],
+                note = item['note'],
+                reporting_unit = item['reporting_unit']
+            )
+        elif '223' == item['id'][12:15]:
+            disaster = models.MasonryStructure.objects.create(
+                id = item['id'], 
+                date = item['date'],
+                location = item['location'],
+                basically_intact_square = item['basically_intact_square'],
+                damaged_square = item['damaged_square'],
+                destroyed_square = item['destroyed_square'],
+                note = item['note'],
+                reporting_unit = item['reporting_unit']
+            )
+        elif '224' == item['id'][12:15]:
+            disaster = models.FrameworkStructure.objects.create(
+                id = item['id'], 
+                date = item['date'],
+                location = item['location'],
+                basically_intact_square = item['basically_intact_square'],
+                damaged_square = item['damaged_square'],
+                destroyed_square = item['destroyed_square'],
+                note = item['note'],
+                reporting_unit = item['reporting_unit']
+            )
+        elif '225' == item['id'][12:15]:
+            disaster = models.OtherStructure.objects.create(
+                id = item['id'], 
+                date = item['date'],
+                location = item['location'],
+                basically_intact_square = item['basically_intact_square'],
+                damaged_square = item['damaged_square'],
+                destroyed_square = item['destroyed_square'],
+                note = item['note'],
+                reporting_unit = item['reporting_unit']
+            )
+
+
+        elif '336' == item['id'][12:15]:
+            disaster = models.CommDisaster.objects.create(
+                id = item['id'], 
+                date = item['date'],
+                location = item['location'],
+                type = item['type'],
+                grade = item['grade'],
+                picture = item['picture'],
+                note = item['note'],
+                reporting_unit = item['reporting_unit']
+            )
+        elif '331' == item['id'][12:15]:
+            disaster = models.TrafficDisaster.objects.create(
+                id = item['id'], 
+                date = item['date'],
+                location = item['location'],
+                type = item['type'],
+                grade = item['grade'],
+                picture = item['picture'],
+                note = item['note'],
+                reporting_unit = item['reporting_unit']
+            )
+        elif '332' == item['id'][12:15]:
+            disaster = models.WaterDisaster.objects.create(
+                id = item['id'], 
+                date = item['date'],
+                location = item['location'],
+                type = item['type'],
+                grade = item['grade'],
+                picture = item['picture'],
+                note = item['note'],
+                reporting_unit = item['reporting_unit']
+            )
+        elif '333' == item['id'][12:15]:
+            disaster = models.OilDisaster.objects.create(
+                id = item['id'], 
+                date = item['date'],
+                location = item['location'],
+                type = item['type'],
+                grade = item['grade'],
+                picture = item['picture'],
+                note = item['note'],
+                reporting_unit = item['reporting_unit']
+            )
+        elif '334' == item['id'][12:15]:
+            disaster = models.GasDisaster.objects.create(
+                id = item['id'], 
+                date = item['date'],
+                location = item['location'],
+                type = item['type'],
+                grade = item['grade'],
+                picture = item['picture'],
+                note = item['note'],
+                reporting_unit = item['reporting_unit']
+            )
+        elif '335' == item['id'][12:15]:
+            disaster = models.PowerDisaster.objects.create(
+                id = item['id'], 
+                date = item['date'],
+                location = item['location'],
+                type = item['type'],
+                grade = item['grade'],
+                picture = item['picture'],
+                note = item['note'],
+                reporting_unit = item['reporting_unit']
+            )
+        elif '337' == item['id'][12:15]:
+            disaster = models.IrrigationDisaster.objects.create(
+                id = item['id'], 
+                date = item['date'],
+                location = item['location'],
+                type = item['type'],
+                grade = item['grade'],
+                picture = item['picture'],
+                note = item['note'],
+                reporting_unit = item['reporting_unit']
+            )
+
+
+        elif '441' == item['id'][12:15]:
+            disaster = models.CollapseRecord.objects.create(
+                id = item['id'], 
+                location = item['location'],
+                date = item['date'],
+                type = item['type'],
+                status = item['status'],
+                note = item['note'],
+                picture = item.picture['picture'],
+                reporting_unit = item['reporting_unit']
+            )
+        elif '442' == item['id'][12:15]:
+            disaster = models.LandslideRecord.objects.create(
+                id = item['id'], 
+                location = item['location'],
+                date = item['date'],
+                type = item['type'],
+                status = item['status'],
+                note = item['note'],
+                picture = item.picture['picture'],
+                reporting_unit = item['reporting_unit']
+            )
+        elif '443' == item['id'][12:15]:
+            disaster = models.DebrisRecord.objects.create(
+                id = item['id'], 
+                location = item['location'],
+                date = item['date'],
+                type = item['type'],
+                status = item['status'],
+                note = item['note'],
+                picture = item.picture['picture'],
+                reporting_unit = item['reporting_unit']
+            )
+        elif '444' == item['id'][12:15]:
+            disaster = models.KarstRecord.objects.create(
+                id = item['id'], 
+                location = item['location'],
+                date = item['date'],
+                type = item['type'],
+                status = item['status'],
+                note = item['note'],
+                picture = item.picture['picture'],
+                reporting_unit = item['reporting_unit']
+            )
+        elif '445' == item['id'][12:15]:
+            disaster = models.CrackRecord.objects.create(
+                id = item['id'], 
+                location = item['location'],
+                date = item['date'],
+                type = item['type'],
+                status = item['status'],
+                note = item['note'],
+                picture = item.picture['picture'],
+                reporting_unit = item['reporting_unit']
+            )
+        elif '446' == item['id'][12:15]:
+            disaster = models.SettlementRecord.objects.create(
+                id = item['id'], 
+                location = item['location'],
+                date = item['date'],
+                type = item['type'],
+                status = item['status'],
+                note = item['note'],
+                picture = item.picture['picture'],
+                reporting_unit = item['reporting_unit']
+            )
+        elif '447' == item['id'][12:15]:
+            disaster = models.OtherRecord.objects.create(
+                id = item['id'], 
+                location = item['location'],
+                date = item['date'],
+                type = item['type'],
+                status = item['status'],
+                note = item['note'],
+                picture = item.picture['picture'],
+                reporting_unit = item['reporting_unit']
+            )
+        elif '551' == item['id'][12:15]:
+            disaster = models.Disasterinfo.objects.create(
+                id = item['id'],
+                date = item['date'],
+                location = item['location'],
+                longtitude = item['longtitude'],
+                latitude = item['latitude'],
+                depth = item['depth'],
+                magnitude = item['magnitude'],
+                picture = item['picture'],
+                reporting_unit = item['reporting_unit']
+            )
+
+    # disaster = CommDisaster()
+    # json_data = open(url)
+    # json_load = json.load(json_data)
+
+    # with open(url,  'r') as data:
+    #     parsed_json = json.load(data)
+    # return parsed_json
 
 
 def insert_DeathStatics(request):
@@ -193,7 +449,6 @@ def insert_CivilStructure(request):
     c_structure.note = request.POST.get('note')
     c_structure.reporting_unit = request.POST.get('ms_code') + request.POST.get('reporting_unit')
     # 获取数据
-
     #  为前端返回是否成功的标识
     try:
         data = InjuredStatics.objects.filter(id=c_structure.id)
@@ -381,7 +636,6 @@ def insert_CoomDisaster(request):
     disaster.note = request.POST.get('note')
     disaster.reporting_unit = request.POST.get('ms_code') + request.POST.get('reporting_unit')
     # 获取数据
-
     # 为前端返回是否成功的标识
     try:
         data = CommDisaster.objects.filter(id=disaster.id)
@@ -1039,6 +1293,223 @@ def details_DeathStatics(request):
         'DisatserPrediction_records': DisatserPrediction_records, 
     }
     )
+
+def details_InjuredStatics(request):
+    InjuredStatics_records = InjuredStatics.objects.all()
+
+    return render(request, 'details_InjuredStatics.html', 
+    {
+        'InjuredStatics_records': InjuredStatics_records, 
+    }
+    )
+
+def details_MissingStatics(request):
+    MissingStatics_records = MissingStatics.objects.all()
+
+    return render(request, 'details_MissingStatics.html', 
+    {
+        'MissingStatics_records': MissingStatics_records, 
+    }
+    )
+
+def details_CivilStructure(request):
+    CivilStructure_records = CivilStructure.objects.all()
+
+    return render(request, 'details_CivilStructure.html', 
+    {
+        'CivilStructure_records': CivilStructure_records, 
+    }
+    )
+
+def details_BrickwoodStructure(request):
+    BrickwoodStructure_records = BrickwoodStructure.objects.all()
+
+    return render(request, 'details_BrickwoodStructure.html', 
+    {
+        'BrickwoodStructure_records': BrickwoodStructure_records, 
+    }
+    )
+
+def details_MasonryStructure(request):
+    MasonryStructure_records = MasonryStructure.objects.all()
+
+    return render(request, 'details_MasonryStructure.html', 
+    {
+        'MasonryStructure_records': MasonryStructure_records, 
+    }
+    )
+
+def details_FrameworkStructure(request):
+    FrameworkStructure_records = FrameworkStructure.objects.all()
+
+    return render(request, 'details_FrameworkStructure.html', 
+    {
+        'FrameworkStructure_records': FrameworkStructure_records, 
+    }
+    )
+
+def details_OtherStructure(request):
+    OtherStructure_records = OtherStructure.objects.all()
+
+    return render(request, 'details_OtherStructure.html', 
+    {
+        'OtherStructure_records': OtherStructure_records, 
+    }
+    )
+
+def details_CommDisaster(request):
+    CommDisaster_records = CommDisaster.objects.all()
+
+    return render(request, 'details_CommDisaster.html', 
+    {
+        'CommDisaster_records': CommDisaster_records, 
+    }
+    )
+
+def details_TrafficDisaster(request):
+    TrafficDisaster_records = TrafficDisaster.objects.all()
+
+    return render(request, 'details_TrafficDisaster.html', 
+    {
+        'TrafficDisaster_records': TrafficDisaster_records, 
+    }
+    )
+
+def details_WaterDisaster(request):
+    WaterDisaster_records = WaterDisaster.objects.all()
+
+    return render(request, 'details_WaterDisaster.html', 
+    {
+        'WaterDisaster_records': WaterDisaster_records, 
+    }
+    )
+
+def details_OilDisaster(request):
+    OilDisaster_records = OilDisaster.objects.all()
+
+    return render(request, 'details_OilDisaster.html', 
+    {
+        'OilDisaster_records': OilDisaster_records, 
+    }
+    )
+
+def details_GasDisaster(request):
+    GasDisaster_records = GasDisaster.objects.all()
+
+    return render(request, 'details_GasDisaster.html', 
+    {
+        'GasDisaster_records': GasDisaster_records, 
+    }
+    )
+
+def details_PowerDisaster(request):
+    PowerDisaster_records = PowerDisaster.objects.all()
+
+    return render(request, 'details_PowerDisaster.html', 
+    {
+        'PowerDisaster_records': PowerDisaster_records, 
+    }
+    )
+
+def details_IrrigationDisaster(request):
+    IrrigationDisaster_records = IrrigationDisaster.objects.all()
+
+    return render(request, 'details_IrrigationDisaster.html', 
+    {
+        'IrrigationDisaster_records': IrrigationDisaster_records, 
+    }
+    )
+
+def details_CollapseRecord(request):
+    CollapseRecord_records = CollapseRecord.objects.all()
+
+    return render(request, 'details_CollapseRecord.html', 
+    {
+        'CollapseRecord_records': CollapseRecord_records, 
+    }
+    )
+
+def details_LandslideRecord(request):
+    LandslideRecord_records = LandslideRecord.objects.all()
+
+    return render(request, 'details_LandslideRecord.html', 
+    {
+        'LandslideRecord_records': LandslideRecord_records, 
+    }
+    )
+
+def details_DebrisRecord(request):
+    DebrisRecord_records = DebrisRecord.objects.all()
+
+    return render(request, 'details_DebrisRecord.html', 
+    {
+        'DebrisRecord_records': DebrisRecord_records, 
+    }
+    )
+
+def details_KarstRecord(request):
+    KarstRecord_records = KarstRecord.objects.all()
+
+    return render(request, 'details_KarstRecord.html', 
+    {
+        'KarstRecord_records': KarstRecord_records, 
+    }
+    )
+
+def details_CrackRecord(request):
+    CrackRecord_records = CrackRecord.objects.all()
+
+    return render(request, 'details_CrackRecord.html', 
+    {
+        'CrackRecord_records': CrackRecord_records, 
+    }
+    )
+
+def details_SettlementRecord(request):
+    SettlementRecord_records = SettlementRecord.objects.all()
+
+    return render(request, 'details_SettlementRecord.html', 
+    {
+        'SettlementRecord_records': SettlementRecord_records, 
+    }
+    )
+
+def details_OtherRecord(request):
+    OtherRecord_records = OtherRecord.objects.all()
+
+    return render(request, 'details_OtherRecord.html', 
+    {
+        'OtherRecord_records': OtherRecord_records, 
+    }
+    )
+
+def details_DisasterInfo(request):
+    DisasterInfo_records = DisasterInfo.objects.all()
+
+    return render(request, 'details_DisasterInfo.html', 
+    {
+        'DisasterInfo_records': DisasterInfo_records, 
+    }
+    )
+
+def details_DisatserPrediction(request):
+    DisatserPrediction_records = DisatserPrediction.objects.all()
+
+    return render(request, 'details_DisatserPrediction.html', 
+    {
+        'DisatserPrediction_records': DisatserPrediction_records, 
+    }
+    )
+
+def details_DisasterRequest(request):
+    DisasterRequest_records = DisasterRequest.objects.all()
+
+    return render(request, 'details_DisasterRequest.html', 
+    {
+        'DisasterRequest_records': DisasterRequest_records, 
+    }
+    )
+
 
 def index(request):
     return render(request, 'index.html', )
