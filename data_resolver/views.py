@@ -14,7 +14,7 @@ from .models import CollapseRecord, LandslideRecord, DebrisRecord, KarstRecord, 
 #  震情
 from .models import DisasterInfo, DisatserPrediction, DisasterRequest
 
-from django.shortcuts import get_object_or_404,  render
+from django.shortcuts import get_object_or_404,  render, redirect
 #  from .models import day, todo
 
 from django.http import JsonResponse
@@ -341,7 +341,12 @@ def read_json_data(url):
 def insert_DeathStatics(request):
     d_statics = DeathStatics()
     # 创建对象
+<<<<<<< HEAD
     d_statics.id = request.POST.get('id')
+=======
+
+    d_statics.id = request.GET.get('id')
+>>>>>>> c28bbf7c3a1c7e489913b5cb44c96e4cfd3e1cdf
     d_statics.location = request.POST.get('location')
     d_statics.date = request.POST.get('date')
     d_statics.number = request.POST.get('number')
@@ -359,24 +364,24 @@ def insert_DeathStatics(request):
     except Exception:
         is_succeed = {"is_succeed": "false"}
         # 没有save成功的时候返回false失败
-    return render(request, 'index_20200504.html', is_succeed)
+    return redirect('details_DeathStatics')
     # render返回deathstatics的页面（这个render的页面之后改成原来的页面）
 
 def del_DeathStatics(request):
-    id = request.POST.get('id')
+    id = request.GET.get('id')
     try:
         data = get_object_or_404(DeathStatics,id=id)
         data.delete()
         is_succeed = {"is_succeed": "true"}
     except Exception:
         is_succeed = {"is_succeed": "false"}
-    return render(request, 'index_20200504.html', is_succeed)
+    return redirect('details_DeathStatics')
 
 
 def insert_InjuredStatics(request):
     # 创建对象
     i_statics = InjuredStatics()
-    i_statics.id = request.POST.get('id')
+    i_statics.id = request.GET.get('id')
     i_statics.location = request.POST.get('location')
     i_statics.date = request.POST.get('date')
     i_statics.number = request.POST.get('number')
@@ -394,22 +399,22 @@ def insert_InjuredStatics(request):
     except Exception:
         is_succeed = {"is_succeed": "false"}
         # 没有save成功的时候返回false失败
-    return render(request, 'index_20200504.html', is_succeed)
+    return redirect('details_InjuredStatics')
     # render返回deathstatics的页面（这个render的页面之后改成原来的页面）
 
 def del_InjuredStatics(request):
-    id = request.POST.get('id')
+    id = request.GET.get('id')
     try:
         data = get_object_or_404(InjuredStatics,id=id)
         data.delete()
         is_succeed = {"is_succeed": "true"}
     except Exception:
         is_succeed = {"is_succeed": "false"}
-    return render(request, 'index_20200504.html', is_succeed)
+    return redirect('details_InjuredStatics')
 
 def insert_MissingStatics(request):
     m_statics = MissingStatics()
-    m_statics.id = request.POST.get('id')
+    m_statics.id = request.GET.get('id')
     m_statics.location = request.POST.get('location')
     m_statics.date = request.POST.get('date')
     m_statics.number = request.POST.get('number')
@@ -424,23 +429,23 @@ def insert_MissingStatics(request):
     except Exception:
         is_succeed = {"is_succeed": "false"}
         # 没有save成功的时候返回false失败
-    return render(request, 'index_20200504.html', is_succeed)
+    return redirect('details_MissingStatics')
     # render返回deathstatics的页面（这个render的页面之后改成原来的页面）
 
 def del_MissingStatics(request):
-    id = request.POST.get('id')
+    id = request.GET.get('id')
     try:
         data = get_object_or_404(MissingStatics,id=id)
         data.delete()
         is_succeed = {"is_succeed": "true"}
     except Exception:
         is_succeed = {"is_succeed": "false"}
-    return render(request, 'index_20200504.html', is_succeed)
+    return redirect('details_MissingStatics')
 
 def insert_CivilStructure(request):
     c_structure = CivilStructure()
     # 创建对象
-    c_structure.id = request.POST.get('id')
+    c_structure.id = request.GET.get('id')
     c_structure.date = request.POST.get('date')
     c_structure.location = request.POST.get('location')
     c_structure.basically_intact_square = request.POST.get('basically_intact_square')
@@ -460,22 +465,22 @@ def insert_CivilStructure(request):
     except Exception:
         is_succeed = {"is_succeed": "false"}
         # 没有save成功的时候返回false失败
-    return render(request, 'index_20200504.html', is_succeed)
+    return redirect('details_CivilStructure')
     # render返回deathstatics的页面（这个render的页面之后改成原来的页面）
 
 def del_CivilStructure(request):
-    id = request.POST.get('id')
+    id = request.GET.get('id')
     try:
         data = get_object_or_404(CivilStructure,id=id)
         data.delete()
         is_succeed = {"is_succeed": "true"}
     except Exception:
         is_succeed = {"is_succeed": "false"}
-    return render(request, 'index_20200504.html', is_succeed)
+    return redirect('details_CivilStructure')
 
 def insert_BrickwoodStructure(request):
     b_structure = BrickwoodStructure()
-    b_structure.id = request.POST.get('id')
+    b_structure.id = request.GET.get('id')
     b_structure.date = request.POST.get('date')
     b_structure.location = request.POST.get('location')
     b_structure.basically_intact_square = request.POST.get('basically_intact_square')
@@ -496,22 +501,22 @@ def insert_BrickwoodStructure(request):
     except Exception:
         is_succeed = {"is_succeed": "false"}
         # 没有save成功的时候返回false失败
-    return render(request, 'index_20200504.html', is_succeed)
+    return redirect('details_BrickwoodStructure')
     # render返回deathstatics的页面（这个render的页面之后改成原来的页面）
 
 def del_BrickwoodStructure(request):
-    id = request.POST.get('id')
+    id = request.GET.get('id')
     try:
         data = get_object_or_404(BrickwoodStructure,id=id)
         data.delete()
         is_succeed = {"is_succeed": "true"}
     except Exception:
         is_succeed = {"is_succeed": "false"}
-    return render(request, 'index_20200504.html', is_succeed)
+    return redirect('details_BrickwoodStructure')
 
 def insert_MasonryStructure(request):
     m_structure = MasonryStructure()
-    m_structure.id = request.POST.get('id')
+    m_structure.id = request.GET.get('id')
     m_structure.date = request.POST.get('date')
     m_structure.location = request.POST.get('location')
     m_structure.basically_intact_square = request.POST.get('basically_intact_square')
@@ -534,22 +539,22 @@ def insert_MasonryStructure(request):
     except Exception:
         is_succeed = {"is_succeed": "false"}
         # 没有save成功的时候返回false失败
-    return render(request, 'index_20200504.html', is_succeed)
+    return redirect('details_MasonryStructure')
     # render返回deathstatics的页面（这个render的页面之后改成原来的页面）
 
 def del_MasonryStructure(request):
-    id = request.POST.get('id')
+    id = request.GET.get('id')
     try:
         data = get_object_or_404(MasonryStructure,id=id)
         data.delete()
         is_succeed = {"is_succeed": "true"}
     except Exception:
         is_succeed = {"is_succeed": "false"}
-    return render(request, 'index_20200504.html', is_succeed)
+    return redirect('details_MasonryStructure')
 
 def insert_FrameworkStructure(request):
     f_structure = FrameworkStructure()
-    f_structure.id = request.POST.get('id')
+    f_structure.id = request.GET.get('id')
     f_structure.date = request.POST.get('date')
     f_structure.location = request.POST.get('location')
     f_structure.basically_intact_square = request.POST.get('basically_intact_square')
@@ -572,22 +577,22 @@ def insert_FrameworkStructure(request):
     except Exception:
         is_succeed = {"is_succeed": "false"}
         # 没有save成功的时候返回false失败
-    return render(request, 'index_20200504.html', is_succeed)
+    return redirect('details_FrameworkStructure')
     # render返回deathstatics的页面（这个render的页面之后改成原来的页面）
 
 def del_FrameworkStructure(request):
-    id = request.POST.get('id')
+    id = request.GET.get('id')
     try:
         data = get_object_or_404(FrameworkStructure,id=id)
         data.delete()
         is_succeed = {"is_succeed": "true"}
     except Exception:
         is_succeed = {"is_succeed": "false"}
-    return render(request, 'index_20200504.html', is_succeed)
+    return redirect('details_FrameworkStructure')
 
 def insert_OtherStructure(request):
     o_structure = OtherStructure()
-    o_structure.id = request.POST.get('id')
+    o_structure.id = request.GET.get('id')
     o_structure.date = request.POST.get('date')
     o_structure.location = request.POST.get('location')
     o_structure.basically_intact_square = request.POST.get('basically_intact_square')
@@ -610,23 +615,23 @@ def insert_OtherStructure(request):
     except Exception:
         is_succeed = {"is_succeed": "false"}
         # 没有save成功的时候返回false失败
-    return render(request, 'index_20200504.html', is_succeed)
+    return redirect('details_OtherStructure')
     # render返回deathstatics的页面（这个render的页面之后改成原来的页面）
 
 def del_OtherStructure(request):
-    id = request.POST.get('id')
+    id = request.GET.get('id')
     try:
         data = get_object_or_404(OtherStructure,id=id)
         data.delete()
         is_succeed = {"is_succeed": "true"}
     except Exception:
         is_succeed = {"is_succeed": "false"}
-    return render(request, 'index_20200504.html', is_succeed)
+    return redirect('details_OtherStructure')
 
 def insert_CommDisaster(request):
     disaster = CommDisaster()
     # 创建对象
-    disaster.id = request.POST.get('id')
+    disaster.id = request.GET.get('id')
     disaster.date = request.POST.get('date')
     disaster.location = request.POST.get('location')
     disaster.type = request.POST.get('type')
@@ -647,23 +652,23 @@ def insert_CommDisaster(request):
     except Exception:
         is_succeed = {"is_succeed": "false"}
         #  没有save成功的时候返回false失败
-    return render(request, 'index_20200504.html', is_succeed)
+    return redirect('details_CommDisaster')
     # render返回deathstatics的页面（这个render的页面之后改成原来的页面）
 
 def del_CommDisaster(request):
-    id = request.POST.get('id')
+    id = request.GET.get('id')
     try:
         data = get_object_or_404(CommDisaster,id=id)
         data.delete()
         is_succeed = {"is_succeed": "true"}
     except Exception:
         is_succeed = {"is_succeed": "false"}
-    return render(request, 'index_20200504.html', is_succeed)
+    return redirect('details_CommDisaster')
 
 def insert_TrafficDisaster(request):
     t_disaster = TrafficDisaster()
     # 创建对象
-    t_disaster.id = request.POST.get('id')
+    t_disaster.id = request.GET.get('id')
     t_disaster.date = request.POST.get('date')
     t_disaster.location = request.POST.get('location')
     t_disaster.type = request.POST.get('type')
@@ -683,23 +688,23 @@ def insert_TrafficDisaster(request):
     except Exception:
         is_succeed = {"is_succeed": "false"}
         # 没有save成功的时候返回false失败
-    return render(request, 'index_20200504.html', is_succeed)
+    return redirect('details_TrafficDisaster')
     # render返回deathstatics的页面（这个render的页面之后改成原来的页面）
 
 def del_TrafficDisaster(request):
-    id = request.POST.get('id')
+    id = request.GET.get('id')
     try:
         data = get_object_or_404(TrafficDisaster,id=id)
         data.delete()
         is_succeed = {"is_succeed": "true"}
     except Exception:
         is_succeed = {"is_succeed": "false"}
-    return render(request, 'index_20200504.html', is_succeed)
+    return redirect('details_TrafficDisaster')
 
 def insert_WaterDisaster(request):
     w_disaster = WaterDisaster()
     # 创建对象
-    w_disaster.id = request.POST.get('id')
+    w_disaster.id = request.GET.get('id')
     w_disaster.date = request.POST.get('date')
     w_disaster.location = request.POST.get('location')
     w_disaster.type = request.POST.get('type')
@@ -719,23 +724,23 @@ def insert_WaterDisaster(request):
     except Exception:
         is_succeed = {"is_succeed": "false"}
         # 没有save成功的时候返回false失败
-    return render(request, 'index_20200504.html', is_succeed)
+    return redirect('details_WaterDisaster')
     # render返回deathstatics的页面（这个render的页面之后改成原来的页面）
 
 def del_WaterDisaster(request):
-    id = request.POST.get('id')
+    id = request.GET.get('id')
     try:
         data = get_object_or_404(WaterDisaster,id=id)
         data.delete()
         is_succeed = {"is_succeed": "true"}
     except Exception:
         is_succeed = {"is_succeed": "false"}
-    return render(request, 'index_20200504.html', is_succeed)
+    return redirect('details_WaterDisaster')
 
 def insert_PowerDisaster(request):
     p_disaster = PowerDisaster()
     # 创建对象
-    p_disaster.id = request.POST.get('id')
+    p_disaster.id = request.GET.get('id')
     p_disaster.date = request.POST.get('date')
     p_disaster.location = request.POST.get('location')
     p_disaster.type = request.POST.get('type')
@@ -756,23 +761,23 @@ def insert_PowerDisaster(request):
     except Exception:
         is_succeed = {"is_succeed": "false"}
         # 没有save成功的时候返回false失败
-    return render(request, 'index_20200504.html', is_succeed)
+    return redirect('details_PowerDisaster')
     # render返回deathstatics的页面（这个render的页面之后改成原来的页面）
 
 def del_PowerDisaster(request):
-    id = request.POST.get('id')
+    id = request.GET.get('id')
     try:
         data = get_object_or_404(PowerDisaster,id=id)
         data.delete()
         is_succeed = {"is_succeed": "true"}
     except Exception:
         is_succeed = {"is_succeed": "false"}
-    return render(request, 'index_20200504.html', is_succeed)
+    return redirect('details_PowerDisaster')
 
 def insert_OilDisaster(request):
     o_disaster = OilDisaster()
     # 创建对象
-    o_disaster.id = request.POST.get('id')
+    o_disaster.id = request.GET.get('id')
     o_disaster.date = request.POST.get('date')
     o_disaster.location = request.POST.get('location')
     o_disaster.type = request.POST.get('type')
@@ -792,23 +797,23 @@ def insert_OilDisaster(request):
     except Exception:
         is_succeed = {"is_succeed": "false"}
         # 没有save成功的时候返回false失败
-    return render(request, 'index_20200504.html', is_succeed)
+    return redirect('details_OilDisaster')
     # render返回deathstatics的页面（这个render的页面之后改成原来的页面）
 
 def del_OilDisaster(request):
-    id = request.POST.get('id')
+    id = request.GET.get('id')
     try:
         data = get_object_or_404(OilDisaster,id=id)
         data.delete()
         is_succeed = {"is_succeed": "true"}
     except Exception:
         is_succeed = {"is_succeed": "false"}
-    return render(request, 'index_20200504.html', is_succeed)
+    return redirect('details_OilDisaster')
 
 def insert_IrrigationDisaster(request):
     i_disaster = IrrigationDisaster()
     # 创建对象
-    i_disaster.id = request.POST.get('id')
+    i_disaster.id = request.GET.get('id')
     i_disaster.date = request.POST.get('date')
     i_disaster.location = request.POST.get('location')
     i_disaster.type = request.POST.get('type')
@@ -828,23 +833,23 @@ def insert_IrrigationDisaster(request):
     except Exception:
         is_succeed = {"is_succeed": "false"}
         # 没有save成功的时候返回false失败
-    return render(request, 'index_20200504.html', is_succeed)
+    return redirect('details_IrrigationDisaster')
     # render返回deathstatics的页面（这个render的页面之后改成原来的页面）
 
 def del_IrrigationDisaster(request):
-    id = request.POST.get('id')
+    id = request.GET.get('id')
     try:
         data = get_object_or_404(IrrigationDisaster,id=id)
         data.delete()
         is_succeed = {"is_succeed": "true"}
     except Exception:
         is_succeed = {"is_succeed": "false"}
-    return render(request, 'index_20200504.html', is_succeed)
+    return redirect('details_IrrigationDisaster')
 
 def insert_GasDisaster(request):
     g_disaster = GasDisaster()
     # 创建对象
-    g_disaster.id = request.POST.get('id')
+    g_disaster.id = request.GET.get('id')
     g_disaster.date = request.POST.get('date')
     g_disaster.location = request.POST.get('location')
     g_disaster.type = request.POST.get('type')
@@ -864,23 +869,23 @@ def insert_GasDisaster(request):
     except Exception:
         is_succeed = {"is_succeed": "false"}
         # 没有save成功的时候返回false失败
-    return render(request, 'index_20200504.html', is_succeed)
+    return redirect('details_GasDisaster')
     # render返回deathstatics的页面（这个render的页面之后改成原来的页面）
 
 def del_GasDisaster(request):
-    id = request.POST.get('id')
+    id = request.GET.get('id')
     try:
         data = get_object_or_404(GasDisaster,id=id)
         data.delete()
         is_succeed = {"is_succeed": "true"}
     except Exception:
         is_succeed = {"is_succeed": "false"}
-    return render(request, 'index_20200504.html', is_succeed)
+    return redirect('details_GasDisaster')
 
 #  CollapseRecord
 def insert_CollapseRecord(request):
     c_record = CollapseRecord()
-    c_record.id = request.POST.get('id')
+    c_record.id = request.GET.get('id')
     c_record.location = request.POST.get('location')
     c_record.date = request.POST.get('date')
     c_record.type = request.POST.get('type')
@@ -901,23 +906,23 @@ def insert_CollapseRecord(request):
     except Exception:
         is_succeed = {"is_succeed": "false"}
         # 没有save成功的时候返回false失败
-    return render(request, 'index_20200504.html', is_succeed)
+    return redirect('details_CollapseRecord')
     # render返回deathstatics的页面（这个render的页面之后改成原来的页面）
 
 def del_CollapseRecord(request):
-    id = request.POST.get('id')
+    id = request.GET.get('id')
     try:
         data = get_object_or_404(CollapseRecord,id=id)
         data.delete()
         is_succeed = {"is_succeed": "true"}
     except Exception:
         is_succeed = {"is_succeed": "false"}
-    return render(request, 'index_20200504.html', is_succeed)
+    return redirect('details_CollapseRecord')
 
 #  CollapseRecord
 def insert_LandslideRecord(request):
     l_record = LandslideRecord()
-    l_record.id = request.POST.get('id')
+    l_record.id = request.GET.get('id')
     l_record.location = request.POST.get('location')
     l_record.date = request.POST.get('date')
     l_record.type = request.POST.get('type')
@@ -938,23 +943,23 @@ def insert_LandslideRecord(request):
     except Exception:
         is_succeed = {"is_succeed": "false"}
         # 没有save成功的时候返回false失败
-    return render(request, 'index_20200504.html', is_succeed)
+    return redirect('details_LandslideRecord')
     # render返回deathstatics的页面（这个render的页面之后改成原来的页面）
 
 def del_LandslideRecord(request):
-    id = request.POST.get('id')
+    id = request.GET.get('id')
     try:
         data = get_object_or_404(LandslideRecord,id=id)
         data.delete()
         is_succeed = {"is_succeed": "true"}
     except Exception:
         is_succeed = {"is_succeed": "false"}
-    return render(request, 'index_20200504.html', is_succeed)
+    return redirect('details_LandslideRecord')
 
 #  CollapseRecord
 def insert_DebrisRecord(request):
     d_record = DebrisRecord()
-    d_record.id = request.POST.get('id')
+    d_record.id = request.GET.get('id')
     d_record.location = request.POST.get('location')
     d_record.date = request.POST.get('date')
     d_record.type = request.POST.get('type')
@@ -975,23 +980,23 @@ def insert_DebrisRecord(request):
     except Exception:
         is_succeed = {"is_succeed": "false"}
         # 没有save成功的时候返回false失败
-    return render(request, 'index_20200504.html', is_succeed)
+    return redirect('details_DebrisRecord')
     # render返回deathstatics的页面（这个render的页面之后改成原来的页面）
 
 def del_DebrisRecord(request):
-    id = request.POST.get('id')
+    id = request.GET.get('id')
     try:
         data = get_object_or_404(DebrisRecord,id=id)
         data.delete()
         is_succeed = {"is_succeed": "true"}
     except Exception:
         is_succeed = {"is_succeed": "false"}
-    return render(request, 'index_20200504.html', is_succeed)
+    return redirect('details_DebrisRecord')
 
 # KarstRecord
 def insert_KarstRecord(request):
     k_record = KarstRecord()
-    k_record.id = request.POST.get('id')
+    k_record.id = request.GET.get('id')
     k_record.location = request.POST.get('location')
     k_record.date = request.POST.get('date')
     k_record.type = request.POST.get('type')
@@ -1012,23 +1017,23 @@ def insert_KarstRecord(request):
     except Exception:
         is_succeed = {"is_succeed": "false"}
         # 没有save成功的时候返回false失败
-    return render(request, 'index_20200504.html', is_succeed)
+    return redirect('details_KarstRecord')
     # render返回deathstatics的页面（这个render的页面之后改成原来的页面）
 
 def del_KarstRecord(request):
-    id = request.POST.get('id')
+    id = request.GET.get('id')
     try:
         data = get_object_or_404(KarstRecord,id=id)
         data.delete()
         is_succeed = {"is_succeed": "true"}
     except Exception:
         is_succeed = {"is_succeed": "false"}
-    return render(request, 'index_20200504.html', is_succeed)
+    return redirect('details_KarstRecord')
 
 # KarstRecord
 def insert_CrackRecord(request):
     c_record = CrackRecord()
-    c_record.id = request.POST.get('id')
+    c_record.id = request.GET.get('id')
     c_record.location = request.POST.get('location')
     c_record.date = request.POST.get('date')
     c_record.type = request.POST.get('type')
@@ -1049,23 +1054,23 @@ def insert_CrackRecord(request):
     except Exception:
         is_succeed = {"is_succeed": "false"}
         # 没有save成功的时候返回false失败
-    return render(request, 'index_20200504.html', is_succeed)
+    return redirect('details_CrackRecord')
     # render返回deathstatics的页面（这个render的页面之后改成原来的页面）
 
 def del_CrackRecord(request):
-    id = request.POST.get('id')
+    id = request.GET.get('id')
     try:
         data = get_object_or_404(CrackRecord,id=id)
         data.delete()
         is_succeed = {"is_succeed": "true"}
     except Exception:
         is_succeed = {"is_succeed": "false"}
-    return render(request, 'index_20200504.html', is_succeed)
+    return redirect('details_CrackRecord')
 
 # KarstRecord
 def insert_SettlementRecord(request):
     s_record = SettlementRecord()
-    s_record.id = request.POST.get('id')
+    s_record.id = request.GET.get('id')
     s_record.location = request.POST.get('location')
     s_record.date = request.POST.get('date')
     s_record.type = request.POST.get('type')
@@ -1086,23 +1091,23 @@ def insert_SettlementRecord(request):
     except Exception:
         is_succeed = {"is_succeed": "false"}
         # 没有save成功的时候返回false失败
-    return render(request, 'index_20200504.html', is_succeed)
+    return redirect('details_SettlementRecord')
     # render返回deathstatics的页面（这个render的页面之后改成原来的页面）
 
 def del_SettlementRecord(request):
-    id = request.POST.get('id')
+    id = request.GET.get('id')
     try:
         data = get_object_or_404(SettlementRecord,id=id)
         data.delete()
         is_succeed = {"is_succeed": "true"}
     except Exception:
         is_succeed = {"is_succeed": "false"}
-    return render(request, 'index_20200504.html', is_succeed)
+    return redirect('details_SettlementRecord')
 
 # KarstRecord
 def insert_OtherRecord(request):
     o_record = OtherRecord()
-    o_record.id = request.POST.get('id')
+    o_record.id = request.GET.get('id')
     o_record.location = request.POST.get('location')
     o_record.date = request.POST.get('date')
     o_record.type = request.POST.get('type')
@@ -1123,23 +1128,23 @@ def insert_OtherRecord(request):
     except Exception:
         is_succeed = {"is_succeed": "false"}
         # 没有save成功的时候返回false失败
-    return render(request, 'index_20200504.html', is_succeed)
+    return redirect('details_OtherRecord')
     # render返回deathstatics的页面（这个render的页面之后改成原来的页面）
 
 def del_OtherRecord(request):
-    id = request.POST.get('id')
+    id = request.GET.get('id')
     try:
         data = get_object_or_404(OtherRecord,id=id)
         data.delete()
         is_succeed = {"is_succeed": "true"}
     except Exception:
         is_succeed = {"is_succeed": "false"}
-    return render(request, 'index_20200504.html', is_succeed)
+    return redirect('details_OtherRecord')
 
 #  Disasterinfo
 def insert_DisasterInfo(request):
     d_info = DisasterInfo()
-    d_info.id = request.POST.get('id')
+    d_info.id = request.GET.get('id')
     d_info.date = request.POST.get('date')
     d_info.location = request.POST.get('location')
     d_info.longtitude = request.POST.get('longtitude')
@@ -1158,23 +1163,23 @@ def insert_DisasterInfo(request):
     except Exception:
         is_succeed = {"is_succeed": "false"}
         # 没有save成功的时候返回false失败
-    return render(request, 'index_20200504.html', is_succeed)
+    return redirect('details_DisasterInfo')
     # render返回deathstatics的页面（这个render的页面之后改成原来的页面）
 
 def del_DisasterInfo(request):
-    id = request.POST.get('id')
+    id = request.GET.get('id')
     try:
         data = get_object_or_404(DisasterInfo,id=id)
         data.delete()
         is_succeed = {"is_succeed": "true"}
     except Exception:
         is_succeed = {"is_succeed": "false"}
-    return render(request, 'index_20200504.html', is_succeed)
+    return redirect('details_DisasterInfo')
 
 #  DisasterPrediction
 def insert_DisatserPrediction(request):
     d_prediction = DisatserPrediction()
-    d_prediction.id = request.POST.get('id')
+    d_prediction.id = request.GET.get('id')
     d_prediction.date = request.POST.get('date')
     d_prediction.location = request.POST.get('location')
     d_prediction.longtitude = request.POST.get('longtitude')
@@ -1196,18 +1201,18 @@ def insert_DisatserPrediction(request):
     except Exception:
         is_succeed = {"is_succeed": "false"}
         # 没有save成功的时候返回false失败
-    return render(request, 'index_20200504.html', is_succeed)
+    return redirect('details_DisatserPrediction')
     # render返回deathstatics的页面（这个render的页面之后改成原来的页面）
 
 def del_DisatserPrediction(request):
-    id = request.POST.get('id')
+    id = request.GET.get('id')
     try:
         data = get_object_or_404(DisatserPrediction,id=id)
         data.delete()
         is_succeed = {"is_succeed": "true"}
     except Exception:
         is_succeed = {"is_succeed": "false"}
-    return render(request, 'index_20200504.html', is_succeed)
+    return redirect('details_DisatserPrediction')
 
 #  DisasterPrediction
 def insert_DisasterRequest(request):
@@ -1225,18 +1230,18 @@ def insert_DisasterRequest(request):
     except Exception:
         is_succeed = {"is_succeed": "false"}
         # 没有save成功的时候返回false失败
-    return render(request, 'index_20200504.html', is_succeed)
+    return redirect('details_DisasterRequest')
     # render返回deathstatics的页面（这个render的页面之后改成原来的页面）
 
 def del_DisasterRequest(request):
-    id = request.POST.get('id')
+    id = request.GET.get('id')
     try:
         data = get_object_or_404(DisasterRequest,id=id)
         data.delete()
         is_succeed = {"is_succeed": "true"}
     except Exception:
         is_succeed = {"is_succeed": "false"}
-    return render(request, 'index_20200504.html', is_succeed)
+    return redirect('details_DisasterRequest')
 
 def index_20200504(request):
     return render(request, 'index_20200504.html', )
