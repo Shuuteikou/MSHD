@@ -341,7 +341,7 @@ def read_json_data(url):
 def insert_DeathStatics(request):
     d_statics = DeathStatics()
     # 创建对象
-    d_statics.id = request.GET.get('id')
+    d_statics.id = request.POST.get('id')
     d_statics.location = request.POST.get('location')
     d_statics.date = request.POST.get('date')
     d_statics.number = request.POST.get('number')
@@ -376,7 +376,7 @@ def del_DeathStatics(request):
 def insert_InjuredStatics(request):
     # 创建对象
     i_statics = InjuredStatics()
-    i_statics.id = request.GET.get('id')
+    i_statics.id = request.POST.get('id')
     i_statics.location = request.POST.get('location')
     i_statics.date = request.POST.get('date')
     i_statics.number = request.POST.get('number')
@@ -409,7 +409,7 @@ def del_InjuredStatics(request):
 
 def insert_MissingStatics(request):
     m_statics = MissingStatics()
-    m_statics.id = request.GET.get('id')
+    m_statics.id = request.POST.get('id')
     m_statics.location = request.POST.get('location')
     m_statics.date = request.POST.get('date')
     m_statics.number = request.POST.get('number')
@@ -440,7 +440,7 @@ def del_MissingStatics(request):
 def insert_CivilStructure(request):
     c_structure = CivilStructure()
     # 创建对象
-    c_structure.id = request.GET.get('id')
+    c_structure.id = request.POST.get('id')
     c_structure.date = request.POST.get('date')
     c_structure.location = request.POST.get('location')
     c_structure.basically_intact_square = request.POST.get('basically_intact_square')
@@ -475,7 +475,7 @@ def del_CivilStructure(request):
 
 def insert_BrickwoodStructure(request):
     b_structure = BrickwoodStructure()
-    b_structure.id = request.GET.get('id')
+    b_structure.id = request.POST.get('id')
     b_structure.date = request.POST.get('date')
     b_structure.location = request.POST.get('location')
     b_structure.basically_intact_square = request.POST.get('basically_intact_square')
@@ -511,7 +511,7 @@ def del_BrickwoodStructure(request):
 
 def insert_MasonryStructure(request):
     m_structure = MasonryStructure()
-    m_structure.id = request.GET.get('id')
+    m_structure.id = request.POST.get('id')
     m_structure.date = request.POST.get('date')
     m_structure.location = request.POST.get('location')
     m_structure.basically_intact_square = request.POST.get('basically_intact_square')
@@ -549,7 +549,7 @@ def del_MasonryStructure(request):
 
 def insert_FrameworkStructure(request):
     f_structure = FrameworkStructure()
-    f_structure.id = request.GET.get('id')
+    f_structure.id = request.POST.get('id')
     f_structure.date = request.POST.get('date')
     f_structure.location = request.POST.get('location')
     f_structure.basically_intact_square = request.POST.get('basically_intact_square')
@@ -587,7 +587,7 @@ def del_FrameworkStructure(request):
 
 def insert_OtherStructure(request):
     o_structure = OtherStructure()
-    o_structure.id = request.GET.get('id')
+    o_structure.id = request.POST.get('id')
     o_structure.date = request.POST.get('date')
     o_structure.location = request.POST.get('location')
     o_structure.basically_intact_square = request.POST.get('basically_intact_square')
@@ -626,7 +626,7 @@ def del_OtherStructure(request):
 def insert_CommDisaster(request):
     disaster = CommDisaster()
     # 创建对象
-    disaster.id = request.GET.get('id')
+    disaster.id = request.POST.get('id')
     disaster.date = request.POST.get('date')
     disaster.location = request.POST.get('location')
     disaster.type = request.POST.get('type')
@@ -663,7 +663,7 @@ def del_CommDisaster(request):
 def insert_TrafficDisaster(request):
     t_disaster = TrafficDisaster()
     # 创建对象
-    t_disaster.id = request.GET.get('id')
+    t_disaster.id = request.POST.get('id')
     t_disaster.date = request.POST.get('date')
     t_disaster.location = request.POST.get('location')
     t_disaster.type = request.POST.get('type')
@@ -699,7 +699,7 @@ def del_TrafficDisaster(request):
 def insert_WaterDisaster(request):
     w_disaster = WaterDisaster()
     # 创建对象
-    w_disaster.id = request.GET.get('id')
+    w_disaster.id = request.POST.get('id')
     w_disaster.date = request.POST.get('date')
     w_disaster.location = request.POST.get('location')
     w_disaster.type = request.POST.get('type')
@@ -735,7 +735,7 @@ def del_WaterDisaster(request):
 def insert_PowerDisaster(request):
     p_disaster = PowerDisaster()
     # 创建对象
-    p_disaster.id = request.GET.get('id')
+    p_disaster.id = request.POST.get('id')
     p_disaster.date = request.POST.get('date')
     p_disaster.location = request.POST.get('location')
     p_disaster.type = request.POST.get('type')
@@ -772,7 +772,7 @@ def del_PowerDisaster(request):
 def insert_OilDisaster(request):
     o_disaster = OilDisaster()
     # 创建对象
-    o_disaster.id = request.GET.get('id')
+    o_disaster.id = request.POST.get('id')
     o_disaster.date = request.POST.get('date')
     o_disaster.location = request.POST.get('location')
     o_disaster.type = request.POST.get('type')
@@ -808,7 +808,7 @@ def del_OilDisaster(request):
 def insert_IrrigationDisaster(request):
     i_disaster = IrrigationDisaster()
     # 创建对象
-    i_disaster.id = request.GET.get('id')
+    i_disaster.id = request.POST.get('id')
     i_disaster.date = request.POST.get('date')
     i_disaster.location = request.POST.get('location')
     i_disaster.type = request.POST.get('type')
@@ -844,7 +844,7 @@ def del_IrrigationDisaster(request):
 def insert_GasDisaster(request):
     g_disaster = GasDisaster()
     # 创建对象
-    g_disaster.id = request.GET.get('id')
+    g_disaster.id = request.POST.get('id')
     g_disaster.date = request.POST.get('date')
     g_disaster.location = request.POST.get('location')
     g_disaster.type = request.POST.get('type')
@@ -880,7 +880,7 @@ def del_GasDisaster(request):
 #  CollapseRecord
 def insert_CollapseRecord(request):
     c_record = CollapseRecord()
-    c_record.id = request.GET.get('id')
+    c_record.id = request.POST.get('id')
     c_record.location = request.POST.get('location')
     c_record.date = request.POST.get('date')
     c_record.type = request.POST.get('type')
@@ -917,7 +917,7 @@ def del_CollapseRecord(request):
 #  CollapseRecord
 def insert_LandslideRecord(request):
     l_record = LandslideRecord()
-    l_record.id = request.GET.get('id')
+    l_record.id = request.POST.get('id')
     l_record.location = request.POST.get('location')
     l_record.date = request.POST.get('date')
     l_record.type = request.POST.get('type')
@@ -954,7 +954,7 @@ def del_LandslideRecord(request):
 #  CollapseRecord
 def insert_DebrisRecord(request):
     d_record = DebrisRecord()
-    d_record.id = request.GET.get('id')
+    d_record.id = request.POST.get('id')
     d_record.location = request.POST.get('location')
     d_record.date = request.POST.get('date')
     d_record.type = request.POST.get('type')
@@ -991,7 +991,7 @@ def del_DebrisRecord(request):
 # KarstRecord
 def insert_KarstRecord(request):
     k_record = KarstRecord()
-    k_record.id = request.GET.get('id')
+    k_record.id = request.POST.get('id')
     k_record.location = request.POST.get('location')
     k_record.date = request.POST.get('date')
     k_record.type = request.POST.get('type')
@@ -1028,7 +1028,7 @@ def del_KarstRecord(request):
 # KarstRecord
 def insert_CrackRecord(request):
     c_record = CrackRecord()
-    c_record.id = request.GET.get('id')
+    c_record.id = request.POST.get('id')
     c_record.location = request.POST.get('location')
     c_record.date = request.POST.get('date')
     c_record.type = request.POST.get('type')
@@ -1065,7 +1065,7 @@ def del_CrackRecord(request):
 # KarstRecord
 def insert_SettlementRecord(request):
     s_record = SettlementRecord()
-    s_record.id = request.GET.get('id')
+    s_record.id = request.POST.get('id')
     s_record.location = request.POST.get('location')
     s_record.date = request.POST.get('date')
     s_record.type = request.POST.get('type')
@@ -1102,7 +1102,7 @@ def del_SettlementRecord(request):
 # KarstRecord
 def insert_OtherRecord(request):
     o_record = OtherRecord()
-    o_record.id = request.GET.get('id')
+    o_record.id = request.POST.get('id')
     o_record.location = request.POST.get('location')
     o_record.date = request.POST.get('date')
     o_record.type = request.POST.get('type')
@@ -1139,7 +1139,7 @@ def del_OtherRecord(request):
 #  Disasterinfo
 def insert_DisasterInfo(request):
     d_info = DisasterInfo()
-    d_info.id = request.GET.get('id')
+    d_info.id = request.POST.get('id')
     d_info.date = request.POST.get('date')
     d_info.location = request.POST.get('location')
     d_info.longtitude = request.POST.get('longtitude')
@@ -1174,7 +1174,7 @@ def del_DisasterInfo(request):
 #  DisasterPrediction
 def insert_DisatserPrediction(request):
     d_prediction = DisatserPrediction()
-    d_prediction.id = request.GET.get('id')
+    d_prediction.id = request.POST.get('id')
     d_prediction.date = request.POST.get('date')
     d_prediction.location = request.POST.get('location')
     d_prediction.longtitude = request.POST.get('longtitude')
