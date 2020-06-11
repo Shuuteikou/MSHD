@@ -295,7 +295,7 @@
                         </form>
                       {% endfor %}
                       {% comment %} 根据后端url要求写action的url跳转？ {% endcomment %}
-                      <form action="insert_DeathStatics" method="post">
+                      <form action="insert_InjuredStatics" method="post">
                           {% csrf_token %}
                           <td><input type="radio" name="choice" id="choice" value=""/></td>
                           <td><input type="text" name="id" id="id" value=""/></td>

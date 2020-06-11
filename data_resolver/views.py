@@ -623,7 +623,7 @@ def del_OtherStructure(request):
         is_succeed = {"is_succeed": "false"}
     return render(request, 'index_20200504.html', is_succeed)
 
-def insert_CoomDisaster(request):
+def insert_CommDisaster(request):
     disaster = CommDisaster()
     # 创建对象
     disaster.id = request.POST.get('id')
@@ -650,7 +650,7 @@ def insert_CoomDisaster(request):
     return render(request, 'index_20200504.html', is_succeed)
     # render返回deathstatics的页面（这个render的页面之后改成原来的页面）
 
-def del_CoomDisaster(request):
+def del_CommDisaster(request):
     id = request.POST.get('id')
     try:
         data = get_object_or_404(CommDisaster,id=id)
@@ -887,6 +887,7 @@ def insert_CollapseRecord(request):
     c_record.status = request.POST.get('status')
     c_record.note = request.POST.get('note')
     #  c_record.picture = cv2.imread('earthquake.jpg')
+    c_record.picture = request.POST.get('picture')
     c_record.reporting_unit = request.POST.get('ms_code') + request.POST.get('reporting_unit')
 
     # 为前端返回是否成功的标识
@@ -923,6 +924,7 @@ def insert_LandslideRecord(request):
     l_record.status = request.POST.get('status')
     l_record.note = request.POST.get('note')
     #  c_record.picture = cv2.imread('earthquake.jpg')
+    l_record.picture = request.POST.get('picture')
     l_record.reporting_unit = request.POST.get('ms_code') + request.POST.get('reporting_unit')
 
     # 为前端返回是否成功的标识
@@ -959,6 +961,7 @@ def insert_DebrisRecord(request):
     d_record.status = request.POST.get('status')
     d_record.note = request.POST.get('note')
     #  c_record.picture = cv2.imread('earthquake.jpg')
+    d_record.picture = request.POST.get('picture')
     d_record.reporting_unit = request.POST.get('ms_code') + request.POST.get('reporting_unit')
 
     # 为前端返回是否成功的标识
@@ -995,6 +998,7 @@ def insert_KarstRecord(request):
     k_record.status = request.POST.get('status')
     k_record.note = request.POST.get('note')
     #  c_record.picture = cv2.imread('earthquake.jpg')
+    k_record.picture = request.POST.get('picture')
     k_record.reporting_unit = request.POST.get('ms_code') + request.POST.get('reporting_unit')
 
     # 为前端返回是否成功的标识
@@ -1031,6 +1035,7 @@ def insert_CrackRecord(request):
     c_record.status = request.POST.get('status')
     c_record.note = request.POST.get('note')
     #  c_record.picture = cv2.imread('earthquake.jpg')
+    c_record.picture = request.POST.get('picture')
     c_record.reporting_unit = request.POST.get('ms_code') + request.POST.get('reporting_unit')
 
     # 为前端返回是否成功的标识
@@ -1067,6 +1072,7 @@ def insert_SettlementRecord(request):
     s_record.status = request.POST.get('status')
     s_record.note = request.POST.get('note')
     #  c_record.picture = cv2.imread('earthquake.jpg')
+    s_record.picture = request.POST.get('picture')
     s_record.reporting_unit = request.POST.get('ms_code') + request.POST.get('reporting_unit')
 
     # 为前端返回是否成功的标识
@@ -1103,6 +1109,7 @@ def insert_OtherRecord(request):
     o_record.status = request.POST.get('status')
     o_record.note = request.POST.get('note')
     #  c_record.picture = cv2.imread('earthquake.jpg')
+    o_record.picture = request.POST.get('picture')
     o_record.reporting_unit = request.POST.get('ms_code') + request.POST.get('reporting_unit')
 
     # 为前端返回是否成功的标识
@@ -1165,7 +1172,7 @@ def del_DisasterInfo(request):
     return render(request, 'index_20200504.html', is_succeed)
 
 #  DisasterPrediction
-def insert_DisasterPrediction(request):
+def insert_DisatserPrediction(request):
     d_prediction = DisatserPrediction()
     d_prediction.id = request.POST.get('id')
     d_prediction.date = request.POST.get('date')
@@ -1192,7 +1199,7 @@ def insert_DisasterPrediction(request):
     return render(request, 'index_20200504.html', is_succeed)
     # render返回deathstatics的页面（这个render的页面之后改成原来的页面）
 
-def del_DisasterPrediction(request):
+def del_DisatserPrediction(request):
     id = request.POST.get('id')
     try:
         data = get_object_or_404(DisatserPrediction,id=id)

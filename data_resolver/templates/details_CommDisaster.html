@@ -301,7 +301,7 @@
                         </form>
                       {% endfor %}
                       {% comment %} 根据后端url要求写action的url跳转？ {% endcomment %}
-                      <form action="insert_OtherStructure" method="post">
+                      <form action="insert_CommDisaster" method="post">
                         {% csrf_token %}
                           <tr>
                               <td><input type="radio" name="choice" id="choice" value=""/></td>                                                       
@@ -314,7 +314,7 @@
                               <td><input type="text" name="note" id="note" value=""/></td>
                               <td><input type="text" name="ms_code" id="ms_code" value=""/></td>
                               <td><input type="text" name="reporting_unit" id="reporting_unit" value=""/></td>
-                              <td><input type="submit" value="保存修改"></td>
+                              <td><input type="submit" value="新增提交"></td>
                           </tr>
                         </form>
                     </tbody>
