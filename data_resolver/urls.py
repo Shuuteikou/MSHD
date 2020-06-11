@@ -12,6 +12,8 @@ urlpatterns = [
     # 人员伤亡
     path('details_DeathStatics',views.details_DeathStatics,name='details_DeathStatics'),
     path('insert_DeathStatics',views.insert_DeathStatics,name="insert_DeathStatics"),
+    path('del_DeathStatics',views.insert_DeathStatics,name="insert_DeathStatics"),
+    
     # 人员受伤
     path('details_InjuredStatics',views.details_InjuredStatics,name="details_InjuredStatics"),
 	path('del_InjuredStatics',views.del_InjuredStatics,name="del_InjuredStatics"),
