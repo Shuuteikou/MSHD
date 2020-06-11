@@ -341,12 +341,7 @@ def read_json_data(url):
 def insert_DeathStatics(request):
     d_statics = DeathStatics()
     # 创建对象
-<<<<<<< HEAD
-    d_statics.id = request.POST.get('id')
-=======
-
     d_statics.id = request.GET.get('id')
->>>>>>> c28bbf7c3a1c7e489913b5cb44c96e4cfd3e1cdf
     d_statics.location = request.POST.get('location')
     d_statics.date = request.POST.get('date')
     d_statics.number = request.POST.get('number')
