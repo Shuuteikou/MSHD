@@ -285,7 +285,7 @@
                       <form action="insert_CollapseRecord" method="post">
                         {% csrf_token %}
                           <tr>
-                              <td><input type="radio" name="choice" id="choice" value=""/></td>                                                       
+                              <td><a class="del" href="del_CollapseRecord?id={{ record.id }}">删</a></td>                                                       
                               <td><input type="text" name="id" id="id" value="{{ record.id }}"/></td>
                               <td><input type="text" name="date" id="date" value="{{ record.date }}"/></td>
                               <td><input type="text" name="location" id="location" value="{{ record.location }}"/></td>
