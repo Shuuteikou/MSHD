@@ -4,4 +4,4 @@
 from django.http import HttpResponseRedirect
 
 def index(request):
-	return HttpResponseRedirect("/data_resolver/details_xmxx")
+	return HttpResponseRedirect("/data_resolver/index_20200514")
