@@ -18,6 +18,7 @@ urlpatterns = [
 	path('deleteuser', views.deleteuser, name='deleteuser'),
 	path('deleteuserResponse', views.deleteuserResponse, name='deleteuserResponse'),
 
+	path('uploadfile', views.uploadfile, name='uploadfile'),
 
     # 人员伤亡
     path('details_DeathStatics',views.details_DeathStatics,name='details_DeathStatics'),

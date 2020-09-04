@@ -21,6 +21,7 @@ from django.shortcuts import get_object_or_404,  render, redirect
 from django.http import JsonResponse
 from django.http import HttpResponseRedirect
 import json
+import os
 
 #  Create your views here.
 disaster_type_dictionary = {
@@ -65,8 +66,8 @@ def registerResponse(request):
 
 def login(request):
     response = render(request, 'lyear_pages_login.html')
-    #response.delete_cookie('uid')
-    #response.delete_cookie('name')
+    response.delete_cookie('uid')
+    response.delete_cookie('name')
     return response
 
 def loginResponse(request):
@@ -166,6 +167,17 @@ def import_json_data(url, test_disaster):
     with open(url,  "w") as f:
         json.dump(new_disaster,  f)
     return
+
+def uploadfile(request):
+    if request.method == "POST":
+        file = request.FILES.get('example-file-input')
+        import os
+        BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        f = open(os.path.join(BASE_DIR, 'data_resolver','static', 'images', file.name), 'wb')
+        for chunk in file.chunks():
+            f.write(chunk)
+        f.close()
+    return JsonResponse({"status":"failed"})
 
 # json文件写入数据库表
 def read_json_data(url):
