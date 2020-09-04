@@ -29,9 +29,9 @@ function validate(){
 			isValidate = false;
 		}
 	}
-	if (isValidate){
-		alert("验证成功");
-	}
+	//if (isValidate){
+	//	alert("验证成功");
+	//}
 	return isValidate;
 }
 
@@ -50,12 +50,18 @@ function sendForm(){
 			},
 			success: function(result){
 				if(result.resultCode == 200){
-					alert("succeed");
+					alert(n + "(uid=" + result.uid + ")"+ "登陆成功");
+					window.location.href='index_20200514';
 				}
-				;
+				else if (result.resultCode == 404){
+                    alert("用户不存在");
+				}
+				else if (result.resultCode == 403){
+                    alert("密码错误");
+				};
 			},
 			error : function(){
-				alert("failed");
+				alert("传输失败");
 			}
 		});
 	}

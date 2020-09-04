@@ -15,6 +15,10 @@ urlpatterns = [
     path('login',views.login,name='login'),
     path('loginResponse',views.loginResponse,name='loginResponse'),
 
+	path('deleteuser', views.deleteuser, name='deleteuser'),
+	path('deleteuserResponse', views.deleteuserResponse, name='deleteuserResponse'),
+
+
     # 人员伤亡
     path('details_DeathStatics',views.details_DeathStatics,name='details_DeathStatics'),
     path('del_DeathStatics',views.del_DeathStatics,name="del_DeathStatics"),

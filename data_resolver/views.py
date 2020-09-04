@@ -64,7 +64,10 @@ def registerResponse(request):
     #return HttpResponseRedirect("/data_resolver/index_20200514")
 
 def login(request):
-    return render(request, 'lyear_pages_login.html')
+    response = render(request, 'lyear_pages_login.html')
+    #response.delete_cookie('uid')
+    #response.delete_cookie('name')
+    return response
 
 def loginResponse(request):
     returnval = {}
@@ -83,10 +86,48 @@ def loginResponse(request):
             else:
                 returnval['is_succeed'] = 'true'
                 returnval['uid'] = data[0].uid
+                returnval['resultCode'] = '200'
     except:
         returnval['is_succeed'] = 'false'
         returnval['resultCode'] = '400'
+    if returnval['is_succeed'] == 'true':
+        response = JsonResponse(returnval)
+        response.set_cookie('uid', data[0].uid)
+        response.set_cookie('name', data[0].usname)
+    else:
+        response = JsonResponse(returnval)
+    return response
+
+
+def deleteuser(request):
+    return render(request, 'lyear_pages_deleteuser.html')
+
+
+def deleteuserResponse(request):
+    returnval = {}
+    r_record = Users()
+    r_record.usname = request.POST.get('u')
+    r_record.pswd = request.POST.get('p')
+
+    try:
+        data = Users.objects.filter(usname=r_record.usname)
+        if not data.exists():
+            # 用户名存在是不可以进行exists操作的
+            returnval['is_succeed'] = 'false'
+            returnval['resultCode'] = '403'
+        else:
+            # 成功save的时候返回成功
+            data.delete()
+            returnval['is_succeed'] = 'true'
+            returnval['resultCode'] = '200'
+            returnval['uid'] = r_record.uid
+    except Exception:
+        # 没有save成功的时候返回false失败
+        returnval['is_succeed'] = 'false'
+        returnval['resultCode'] = '400'
     return JsonResponse(returnval)
+    # return HttpResponseRedirect("/data_resolver/index_20200514")
+
 
 # 响应请求信息
 def response_disasterType(request):
