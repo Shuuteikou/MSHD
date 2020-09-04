@@ -9,6 +9,12 @@ urlpatterns = [
     path('details_xmxx',views.details_xmxx,name='details_xmxx'),
     path('index',views.index,name='index'),
 
+    path('register',views.register,name='register'),
+    path('registerResponse',views.registerResponse,name='registerResponse'),
+
+    path('login',views.login,name='login'),
+    path('loginResponse',views.loginResponse,name='loginResponse'),
+
     # 人员伤亡
     path('details_DeathStatics',views.details_DeathStatics,name='details_DeathStatics'),
     path('del_DeathStatics',views.del_DeathStatics,name="del_DeathStatics"),

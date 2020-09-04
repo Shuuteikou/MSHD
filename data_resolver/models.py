@@ -1,5 +1,18 @@
 from django.db import models
 
+#####用户信息#####
+#用户信息
+class Users(models.Model):
+    uid = models.AutoField(primary_key=True)
+    #用户识别uid
+    usname = models.CharField(max_length=100)
+    #用户名称
+    pswd = models.CharField(max_length=100)
+    #用户密码
+    def __str__(self):
+        return self.id
+
+
 #####人员伤亡及失踪数据库设计表#####
 #人员死亡
 class DeathStatics(models.Model):
@@ -542,7 +555,7 @@ class DisatserPrediction(models.Model):
 #向请求方输出地灾情数据信息表
 class DisasterRequest(models.Model):
     #编码
-    id = models.AutoField(max_length=19,primary_key=True)
+    id = models.AutoField(primary_key=True)
     #上报时间:日期(日-月-年) DD-MM-YY(HH-MISS) - 24小时制
     date = models.CharField(max_length=12)
     #请求灾情类型(详见表1 - 灾情信息分类表)

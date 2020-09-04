@@ -4,6 +4,8 @@
 from django.shortcuts import render
 from django.core import serializers
 #  人员
+from .models import Users
+# 用户
 from .models import DeathStatics, MissingStatics, InjuredStatics
 #  房屋
 from .models import CivilStructure,  MasonryStructure,  BrickwoodStructure,  FrameworkStructure, OtherStructure
@@ -16,8 +18,8 @@ from .models import DisasterInfo, DisatserPrediction, DisasterRequest
 
 from django.shortcuts import get_object_or_404,  render, redirect
 #  from .models import day, todo
-
 from django.http import JsonResponse
+from django.http import HttpResponseRedirect
 import json
 
 #  Create your views here.
@@ -32,6 +34,59 @@ disaster_type_dictionary = {
     '551':DisasterInfo,'552':DisatserPrediction,
 }
 # 代号和代号类的对应表
+
+def register(request):
+    return render(request, 'lyear_pages_register.html')
+
+def registerResponse(request):
+    returnval = {}
+    r_record = Users()
+    r_record.usname = request.POST.get('u')
+    r_record.pswd = request.POST.get('p')
+    
+    try:
+              data = Users.objects.filter(usname=r_record.usname)
+              if data.exists():
+              #用户名存在是不可以进行exists操作的
+                  returnval['is_succeed'] = 'false'
+                  returnval['resultCode'] = '403'
+              else:
+              # 成功save的时候返回成功
+                  r_record.save()
+                  returnval['is_succeed'] = 'true'
+                  returnval['resultCode'] = '200'
+                  returnval['uid'] = r_record.uid
+    except Exception:
+              # 没有save成功的时候返回false失败
+              returnval['is_succeed'] = 'false'
+              returnval['resultCode'] = '400'
+    return JsonResponse(returnval)
+    #return HttpResponseRedirect("/data_resolver/index_20200514")
+
+def login(request):
+    return render(request, 'lyear_pages_login.html')
+
+def loginResponse(request):
+    returnval = {}
+    r_record = Users()
+    r_record.usname = request.POST.get('u')
+    r_record.pswd = request.POST.get('p')
+    try:
+        data = Users.objects.filter(usname=r_record.usname)
+        if not data.exists():
+            returnval['is_succeed'] = 'false'
+            returnval['resultCode'] = '404'
+        else:
+            if data[0].pswd != r_record.pswd:
+                returnval['is_succeed'] = 'false'
+                returnval['resultCode'] = '403'
+            else:
+                returnval['is_succeed'] = 'true'
+                returnval['uid'] = data[0].uid
+    except:
+        returnval['is_succeed'] = 'false'
+        returnval['resultCode'] = '400'
+    return JsonResponse(returnval)
 
 # 响应请求信息
 def response_disasterType(request):
@@ -77,7 +132,7 @@ def read_json_data(url):
         parsed_json = json.load(data)
     for item in parsed_json:
         if '111' == item['id'][12:15]:
-            disaster = models.DeathStatics.objects.create(
+            disaster = DeathStatics.objects.create(
                 id = item['id'], 
                 location = item['location'],
                 date = item['date'],
@@ -86,7 +141,7 @@ def read_json_data(url):
             )
             disaster.save()
         elif '112' == item['id'][12:15]:
-            disaster = models.InjuredStatics.objects.create(
+            disaster = InjuredStatics.objects.create(
                 id = item['id'], 
                 location = item['location'],
                 date = item['date'],
@@ -94,7 +149,7 @@ def read_json_data(url):
                 reporting_unit = item['reporting_unit']
             )
         elif '113' == item['id'][12:15]:
-            disaster = models.MissingStatics.objects.create(
+            disaster = MissingStatics.objects.create(
                 id = item['id'], 
                 location = item['location'],
                 date = item['date'],
@@ -104,7 +159,7 @@ def read_json_data(url):
 
 
         elif '221' == item['id'][12:15]:
-            disaster = models.CivilStructure.objects.create(
+            disaster = CivilStructure.objects.create(
                 id = item['id'], 
                 date = item['date'],
                 location = item['location'],
@@ -115,7 +170,7 @@ def read_json_data(url):
                 reporting_unit = item['reporting_unit']
             )
         elif '222' == item['id'][12:15]:
-            disaster = models.BrickwoodStructure.objects.create(
+            disaster = BrickwoodStructure.objects.create(
                 id = item['id'], 
                 date = item['date'],
                 location = item['location'],
@@ -126,7 +181,7 @@ def read_json_data(url):
                 reporting_unit = item['reporting_unit']
             )
         elif '223' == item['id'][12:15]:
-            disaster = models.MasonryStructure.objects.create(
+            disaster = MasonryStructure.objects.create(
                 id = item['id'], 
                 date = item['date'],
                 location = item['location'],
@@ -137,7 +192,7 @@ def read_json_data(url):
                 reporting_unit = item['reporting_unit']
             )
         elif '224' == item['id'][12:15]:
-            disaster = models.FrameworkStructure.objects.create(
+            disaster = FrameworkStructure.objects.create(
                 id = item['id'], 
                 date = item['date'],
                 location = item['location'],
@@ -148,7 +203,7 @@ def read_json_data(url):
                 reporting_unit = item['reporting_unit']
             )
         elif '225' == item['id'][12:15]:
-            disaster = models.OtherStructure.objects.create(
+            disaster = OtherStructure.objects.create(
                 id = item['id'], 
                 date = item['date'],
                 location = item['location'],
@@ -161,7 +216,7 @@ def read_json_data(url):
 
 
         elif '336' == item['id'][12:15]:
-            disaster = models.CommDisaster.objects.create(
+            disaster = CommDisaster.objects.create(
                 id = item['id'], 
                 date = item['date'],
                 location = item['location'],
@@ -172,7 +227,7 @@ def read_json_data(url):
                 reporting_unit = item['reporting_unit']
             )
         elif '331' == item['id'][12:15]:
-            disaster = models.TrafficDisaster.objects.create(
+            disaster = TrafficDisaster.objects.create(
                 id = item['id'], 
                 date = item['date'],
                 location = item['location'],
@@ -183,7 +238,7 @@ def read_json_data(url):
                 reporting_unit = item['reporting_unit']
             )
         elif '332' == item['id'][12:15]:
-            disaster = models.WaterDisaster.objects.create(
+            disaster = WaterDisaster.objects.create(
                 id = item['id'], 
                 date = item['date'],
                 location = item['location'],
@@ -194,7 +249,7 @@ def read_json_data(url):
                 reporting_unit = item['reporting_unit']
             )
         elif '333' == item['id'][12:15]:
-            disaster = models.OilDisaster.objects.create(
+            disaster = OilDisaster.objects.create(
                 id = item['id'], 
                 date = item['date'],
                 location = item['location'],
@@ -205,7 +260,7 @@ def read_json_data(url):
                 reporting_unit = item['reporting_unit']
             )
         elif '334' == item['id'][12:15]:
-            disaster = models.GasDisaster.objects.create(
+            disaster = GasDisaster.objects.create(
                 id = item['id'], 
                 date = item['date'],
                 location = item['location'],
@@ -216,7 +271,7 @@ def read_json_data(url):
                 reporting_unit = item['reporting_unit']
             )
         elif '335' == item['id'][12:15]:
-            disaster = models.PowerDisaster.objects.create(
+            disaster = PowerDisaster.objects.create(
                 id = item['id'], 
                 date = item['date'],
                 location = item['location'],
@@ -227,7 +282,7 @@ def read_json_data(url):
                 reporting_unit = item['reporting_unit']
             )
         elif '337' == item['id'][12:15]:
-            disaster = models.IrrigationDisaster.objects.create(
+            disaster = IrrigationDisaster.objects.create(
                 id = item['id'], 
                 date = item['date'],
                 location = item['location'],
@@ -240,7 +295,7 @@ def read_json_data(url):
 
 
         elif '441' == item['id'][12:15]:
-            disaster = models.CollapseRecord.objects.create(
+            disaster = CollapseRecord.objects.create(
                 id = item['id'], 
                 location = item['location'],
                 date = item['date'],
@@ -251,7 +306,7 @@ def read_json_data(url):
                 reporting_unit = item['reporting_unit']
             )
         elif '442' == item['id'][12:15]:
-            disaster = models.LandslideRecord.objects.create(
+            disaster = LandslideRecord.objects.create(
                 id = item['id'], 
                 location = item['location'],
                 date = item['date'],
@@ -262,7 +317,7 @@ def read_json_data(url):
                 reporting_unit = item['reporting_unit']
             )
         elif '443' == item['id'][12:15]:
-            disaster = models.DebrisRecord.objects.create(
+            disaster = DebrisRecord.objects.create(
                 id = item['id'], 
                 location = item['location'],
                 date = item['date'],
@@ -273,7 +328,7 @@ def read_json_data(url):
                 reporting_unit = item['reporting_unit']
             )
         elif '444' == item['id'][12:15]:
-            disaster = models.KarstRecord.objects.create(
+            disaster = KarstRecord.objects.create(
                 id = item['id'], 
                 location = item['location'],
                 date = item['date'],
@@ -284,7 +339,7 @@ def read_json_data(url):
                 reporting_unit = item['reporting_unit']
             )
         elif '445' == item['id'][12:15]:
-            disaster = models.CrackRecord.objects.create(
+            disaster = CrackRecord.objects.create(
                 id = item['id'], 
                 location = item['location'],
                 date = item['date'],
@@ -295,7 +350,7 @@ def read_json_data(url):
                 reporting_unit = item['reporting_unit']
             )
         elif '446' == item['id'][12:15]:
-            disaster = models.SettlementRecord.objects.create(
+            disaster = SettlementRecord.objects.create(
                 id = item['id'], 
                 location = item['location'],
                 date = item['date'],
@@ -306,7 +361,7 @@ def read_json_data(url):
                 reporting_unit = item['reporting_unit']
             )
         elif '447' == item['id'][12:15]:
-            disaster = models.OtherRecord.objects.create(
+            disaster = OtherRecord.objects.create(
                 id = item['id'], 
                 location = item['location'],
                 date = item['date'],
@@ -317,7 +372,7 @@ def read_json_data(url):
                 reporting_unit = item['reporting_unit']
             )
         elif '551' == item['id'][12:15]:
-            disaster = models.Disasterinfo.objects.create(
+            disaster = DisasterInfo.objects.create(
                 id = item['id'],
                 date = item['date'],
                 location = item['location'],
