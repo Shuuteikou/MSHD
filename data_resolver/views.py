@@ -172,17 +172,18 @@ def uploadfile(request):
     if request.method == "POST":
         file = request.FILES.get('example-file-input')
         BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-        f = open(os.path.join(BASE_DIR, 'data_resolver','static', 'images', file.name), 'wb')
+        path = os.path.join(BASE_DIR, 'data_resolver','static', 'data', file.name)
+        f = open(path, 'wb')
         for chunk in file.chunks():
             f.write(chunk)
         f.close()
         if file.name[-5:] == '.json':
-            read_json_data(f)
+            read_json_data(path)
     return JsonResponse({"status":"success"})
 
 # json文件写入数据库表
 def read_json_data(url):
-    with open(url,  'rb') as data:
+    with open(url,'rb') as data:
         parsed_json = json.load(data)
     for item in parsed_json:
         if '111' == item['id'][12:15]:
